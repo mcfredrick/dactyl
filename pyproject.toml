@@ -1,0 +1,11 @@
+[project]
+name = "dactyl"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "httpx>=0.27",
+    "beautifulsoup4>=4.12",
+]
+
+[tool.uv]
+dev-dependencies = []

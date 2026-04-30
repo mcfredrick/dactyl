@@ -1,0 +1,20 @@
+baseURL = "https://mcfredrick.github.io/dactyl/"
+title = "Pivot"
+languageCode = "en-us"
+theme = "pivot"
+paginate = 20
+
+[taxonomies]
+  tag = "tags"
+
+[outputs]
+  home = ["HTML", "RSS"]
+  section = ["HTML", "RSS"]
+
+[params]
+  description = "Daily ML/AI job digest for engineers pivoting into climate tech"
+  author = "Pivot Bot"
+
+[markup]
+  [markup.highlight]
+    noClasses = false

@@ -1,0 +1,95 @@
+#!/usr/bin/env python3
+"""Selects the best available free models from OpenRouter for research and writing tasks."""
+
+import json
+import os
+import re
+import sys
+
+import httpx
+
+FALLBACK_MODEL = "meta-llama/llama-3.3-70b-instruct:free"
+
+WRITING_QUALITY_TIERS = [
+    "gemini-2",
+    "deepseek-r1",
+    "llama-3.3-70b",
+    "llama-3.1-70b",
+    "qwen",
+    "mistral-large",
+]
+
+
+def fetch_free_models() -> list[dict]:
+    try:
+        response = httpx.get(
+            "https://openrouter.ai/api/v1/models",
+            timeout=15,
+            headers={"Authorization": f"Bearer {os.environ['OPENROUTER_API_KEY']}"},
+        )
+        response.raise_for_status()
+        models = response.json().get("data", [])
+        return [
+            m for m in models
+            if str(m.get("pricing", {}).get("prompt", "1")) == "0"
+            and m.get("architecture", {}).get("modality", "") == "text->text"
+        ]
+    except Exception as e:
+        print(f"Warning: failed to fetch models: {e}", file=sys.stderr)
+        return []
+
+
+def pick_research_model(free_models: list[dict]) -> str:
+    if not free_models:
+        return FALLBACK_MODEL
+    ranked = sorted(free_models, key=lambda m: m.get("context_length", 0), reverse=True)
+    return ranked[0]["id"]
+
+
+def parse_param_count(model_id: str) -> int:
+    matches = re.findall(r'(\d+)b(?![a-z])', model_id.lower())
+    return max((int(n) for n in matches), default=0)
+
+
+def pick_writing_model(free_models: list[dict]) -> str:
+    if not free_models:
+        return FALLBACK_MODEL
+    for tier_keyword in WRITING_QUALITY_TIERS:
+        matches = [m for m in free_models if tier_keyword in m["id"].lower()]
+        if matches:
+            return max(matches, key=lambda m: parse_param_count(m["id"]))["id"]
+    return pick_research_model(free_models)
+
+
+def build_candidate_list(preferred: str, api_key: str) -> list[str]:
+    live_ids = [m["id"] for m in fetch_free_models()]
+    seen: set[str] = set()
+    candidates: list[str] = []
+    for m in [preferred] + live_ids:
+        if m not in seen:
+            seen.add(m)
+            candidates.append(m)
+    return candidates
+
+
+def main() -> None:
+    free_models = fetch_free_models()
+
+    if not free_models:
+        print("Warning: using fallback models", file=sys.stderr)
+        research_model = FALLBACK_MODEL
+        writing_model = FALLBACK_MODEL
+    else:
+        research_model = pick_research_model(free_models)
+        writing_model = pick_writing_model(free_models)
+
+    print(f"RESEARCH_MODEL={research_model}")
+    print(f"WRITING_MODEL={writing_model}")
+
+    with open(os.environ.get("GITHUB_ENV", "/dev/null"), "a") as f:
+        f.write(f"RESEARCH_MODEL={research_model}\n")
+        f.write(f"WRITING_MODEL={writing_model}\n")
+
+
+if __name__ == "__main__":
+    main()

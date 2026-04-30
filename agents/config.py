@@ -1,0 +1,8 @@
+BLOG_NAME = "Pivot"
+BLOG_SLUG = "pivot"
+BLOG_URL = "https://mcfredrick.github.io/dactyl/"
+BLOG_GITHUB = "mcfredrick/dactyl"
+BOT_NAME = "pivot-bot"
+BOT_EMAIL = "pivot-bot@users.noreply.github.com"
+BLOG_DESCRIPTION = "Daily ML/AI job digest for engineers pivoting into climate tech"
+BOT_USER_AGENT = f"{BOT_NAME}/1.0 (github.com/{BLOG_GITHUB})"

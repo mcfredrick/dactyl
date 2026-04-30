@@ -1,0 +1,10 @@
+<header class="site-header">
+  <nav class="site-nav">
+    <a href="{{ .Site.Home.RelPermalink }}" class="site-title">{{ .Site.Title }}</a>
+    <div class="nav-links">
+      <a href="{{ "posts/" | relURL }}">Archive</a>
+      <a href="{{ "index.xml" | absURL }}">RSS</a>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">Night</button>
+    </div>
+  </nav>
+</header>
