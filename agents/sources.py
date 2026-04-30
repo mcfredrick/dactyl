@@ -8,7 +8,12 @@ from config import BOT_USER_AGENT
 
 TIMEOUT = 20
 
-JOBS_SOURCES = {"greentownlabs", "climatebase", "mcj", "workonclimate"}
+JOBS_SOURCES = {"greentownlabs", "climatebase"}
+
+
+def _name(x: Any) -> str:
+    """Extract a display name from a string or a {name: ...} dict."""
+    return x.get("name", str(x)) if isinstance(x, dict) else str(x)
 
 
 def greentownlabs_jobs() -> list[dict]:
@@ -47,8 +52,8 @@ def greentownlabs_jobs() -> list[dict]:
             continue
         seen.add(url)
         company = job.get("companyName", "")
-        depts = ", ".join(job.get("departments", [])) if job.get("departments") else ""
-        skills = ", ".join(job.get("skills", [])[:5]) if job.get("skills") else ""
+        depts = ", ".join(_name(d) for d in job.get("departments", [])) if job.get("departments") else ""
+        skills = ", ".join(_name(s) for s in job.get("skills", [])[:5]) if job.get("skills") else ""
         text = " — ".join(filter(None, [company, depts, skills, "Remote"]))
         results.append({
             "title": job.get("title", "").strip(),
@@ -238,6 +243,6 @@ def workonclimate_jobs() -> list[dict]:
 ALL_SOURCES: dict[str, Any] = {
     "greentownlabs": greentownlabs_jobs,
     "climatebase": climatebase_jobs,
-    "mcj": mcj_jobs,
-    "workonclimate": workonclimate_jobs,
+    # mcj: mcj.vc/jobs 404s since domain migration from mcjcollective.com
+    # workonclimate: workonclimate.org/jobs 404s; no working alternative found
 }
