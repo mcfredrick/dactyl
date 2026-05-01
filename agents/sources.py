@@ -8,7 +8,26 @@ from config import BOT_USER_AGENT
 
 TIMEOUT = 20
 
-JOBS_SOURCES = {"greentownlabs", "climatebase"}
+JOBS_SOURCES = {"greentownlabs", "linkedin"}
+
+# Queries for LinkedIn job search: each combines an ML/AI role term with a climate/sustainability term.
+# The LLM scorer filters false positives; breadth here is intentional.
+_LINKEDIN_QUERIES = [
+    "machine learning climate",
+    "machine learning clean energy",
+    "machine learning renewable energy",
+    "machine learning carbon",
+    "machine learning energy storage",
+    "machine learning solar",
+    "machine learning agriculture",
+    "machine learning food tech",
+    "machine learning sustainability",
+    "MLOps climate",
+    "data engineer climate",
+    "data engineer clean energy",
+    "ML engineer sustainability",
+    "AI engineer climate",
+]
 
 
 def _name(x: Any) -> str:
@@ -65,184 +84,65 @@ def greentownlabs_jobs() -> list[dict]:
     return results
 
 
-def climatebase_jobs() -> list[dict]:
-    """Fetch remote ML/AI jobs from Climatebase."""
+def linkedin_jobs() -> list[dict]:
+    """Search LinkedIn's guest job API across climate+ML keyword combinations.
+
+    Uses the unauthenticated /jobs-guest endpoint — no credentials required.
+    Remote filter (f_WT=2) is applied but imperfect; LLM scorer handles cleanup.
+    """
     import httpx
     from bs4 import BeautifulSoup
 
-    results = []
-    seen: set[str] = set()
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    }
 
-    # Try undocumented JSON API first
-    try:
-        r = httpx.get(
-            "https://climatebase.org/api/jobs",
-            params={"remote": "true", "page": 1, "per_page": 50},
-            headers={"User-Agent": BOT_USER_AGENT, "Accept": "application/json"},
-            timeout=TIMEOUT,
-        )
-        if r.status_code == 200 and r.headers.get("content-type", "").startswith("application/json"):
-            data = r.json()
-            jobs = data.get("jobs") or data.get("results") or data.get("data") or []
-            for job in jobs:
-                url = job.get("apply_url") or job.get("url") or job.get("link", "")
+    seen: set[str] = set()
+    results: list[dict] = []
+
+    for query in _LINKEDIN_QUERIES:
+        try:
+            r = httpx.get(
+                "https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPostings/search",
+                params={"keywords": query, "location": "Worldwide", "f_WT": "2", "f_JT": "F", "start": "0"},
+                headers=headers,
+                timeout=TIMEOUT,
+            )
+            if r.status_code != 200:
+                print(f"  linkedin '{query}': {r.status_code}", file=sys.stderr)
+                continue
+
+            soup = BeautifulSoup(r.text, "html.parser")
+            for card in soup.select("li"):
+                title_el = card.select_one("h3")
+                company_el = card.select_one("h4")
+                link_el = card.select_one("a[href*='linkedin.com/jobs/view']")
+                loc_el = card.select_one(".job-search-card__location")
+                if not title_el or not link_el:
+                    continue
+                url = link_el.get("href", "").split("?")[0]
                 if not url or url in seen:
                     continue
-                if not (job.get("remote") or job.get("is_remote")):
-                    continue
                 seen.add(url)
-                company = job.get("company") or job.get("organization", {}).get("name", "")
+                company = company_el.get_text(strip=True) if company_el else ""
+                location = loc_el.get_text(strip=True) if loc_el else ""
+                text = " — ".join(filter(None, [company, location, query]))
                 results.append({
-                    "title": job.get("title", "").strip(),
+                    "title": title_el.get_text(strip=True),
                     "url": url,
-                    "text": f"{company} — {job.get('description', '')[:300]}",
+                    "text": text,
                     "company": company,
                 })
-            if results:
-                return results[:20]
-    except Exception as e:
-        print(f"  climatebase API attempt failed: {e}", file=sys.stderr)
+        except Exception as e:
+            print(f"  linkedin '{query}' failed: {e}", file=sys.stderr)
 
-    # Fall back to HTML scraping
-    try:
-        r = httpx.get(
-            "https://climatebase.org/jobs",
-            params={"remote": "true", "roles": "engineering,data"},
-            headers={"User-Agent": BOT_USER_AGENT},
-            timeout=TIMEOUT,
-            follow_redirects=True,
-        )
-        r.raise_for_status()
-        soup = BeautifulSoup(r.text, "html.parser")
-
-        for article in soup.select("article, [data-job-id], .job-card, .job-listing")[:30]:
-            title_el = article.select_one("h2, h3, .job-title, [class*='title']")
-            link_el = article.select_one("a[href*='/jobs/'], a[href*='job']")
-            company_el = article.select_one(".company, .organization, [class*='company']")
-            remote_el = article.find(string=lambda t: t and "remote" in t.lower())
-
-            if not title_el or not link_el:
-                continue
-            if not remote_el:
-                continue
-
-            href = link_el.get("href", "")
-            if href.startswith("/"):
-                href = f"https://climatebase.org{href}"
-            if not href or href in seen:
-                continue
-
-            company = company_el.get_text(strip=True) if company_el else ""
-            seen.add(href)
-            results.append({
-                "title": title_el.get_text(strip=True),
-                "url": href,
-                "text": f"{company} — Remote",
-                "company": company,
-            })
-
-        return results[:20]
-    except Exception as e:
-        print(f"  climatebase HTML scrape failed: {e}", file=sys.stderr)
-        return []
-
-
-def mcj_jobs() -> list[dict]:
-    """Fetch remote ML/AI jobs from MCJ Collective job board."""
-    import httpx
-    from bs4 import BeautifulSoup
-
-    try:
-        r = httpx.get(
-            "https://www.mcjcollective.com/jobs",
-            headers={"User-Agent": BOT_USER_AGENT},
-            timeout=TIMEOUT,
-            follow_redirects=True,
-        )
-        r.raise_for_status()
-        soup = BeautifulSoup(r.text, "html.parser")
-
-        results = []
-        seen: set[str] = set()
-
-        for el in soup.select("a[href*='lever.co'], a[href*='greenhouse.io'], a[href*='ashbyhq.com'], a[href*='jobs']")[:40]:
-            href = el.get("href", "")
-            if not href or href in seen:
-                continue
-            title = el.get_text(strip=True)
-            if not title or len(title) < 5:
-                continue
-            seen.add(href)
-
-            parent = el.find_parent(["li", "div", "article"])
-            company = ""
-            if parent:
-                company_el = parent.find(class_=lambda c: c and "company" in c.lower() if c else False)
-                if company_el:
-                    company = company_el.get_text(strip=True)
-
-            results.append({
-                "title": title,
-                "url": href,
-                "text": f"{company} — Remote (MCJ)" if company else "Remote (MCJ)",
-                "company": company,
-            })
-
-        return results[:15]
-    except Exception as e:
-        print(f"  mcj_jobs fetch failed: {e}", file=sys.stderr)
-        return []
-
-
-def workonclimate_jobs() -> list[dict]:
-    """Fetch remote ML/AI jobs from Work on Climate."""
-    import httpx
-    from bs4 import BeautifulSoup
-
-    try:
-        r = httpx.get(
-            "https://workonclimate.org/jobs",
-            headers={"User-Agent": BOT_USER_AGENT},
-            timeout=TIMEOUT,
-            follow_redirects=True,
-        )
-        r.raise_for_status()
-        soup = BeautifulSoup(r.text, "html.parser")
-
-        results = []
-        seen: set[str] = set()
-
-        for el in soup.select("a[href]")[:60]:
-            href = el.get("href", "")
-            if not href:
-                continue
-            # Look for job application links
-            if not any(x in href for x in ["lever.co", "greenhouse.io", "ashby", "apply", "job"]):
-                continue
-            if href in seen:
-                continue
-
-            title = el.get_text(strip=True)
-            if not title or len(title) < 5:
-                continue
-            seen.add(href)
-
-            results.append({
-                "title": title,
-                "url": href,
-                "text": "Remote (Work on Climate)",
-                "company": "",
-            })
-
-        return results[:15]
-    except Exception as e:
-        print(f"  workonclimate fetch failed: {e}", file=sys.stderr)
-        return []
+    return results
 
 
 ALL_SOURCES: dict[str, Any] = {
     "greentownlabs": greentownlabs_jobs,
-    "climatebase": climatebase_jobs,
+    "linkedin": linkedin_jobs,
+    # climatebase: fully Cloudflare-locked (403 on all API/HTML paths)
     # mcj: mcj.vc/jobs 404s since domain migration from mcjcollective.com
     # workonclimate: workonclimate.org/jobs 404s; no working alternative found
 }
