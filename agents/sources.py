@@ -8,7 +8,7 @@ from config import BOT_USER_AGENT
 
 TIMEOUT = 20
 
-JOBS_SOURCES = {"greentownlabs", "linkedin"}
+JOBS_SOURCES = {"greentownlabs", "linkedin", "exa"}
 
 # Queries for LinkedIn job search: role term × climate/sustainability term.
 # Covers the full breadth of the candidate's background — ML, audio/video, systems, backend.
@@ -152,10 +152,17 @@ def linkedin_jobs() -> list[dict]:
     return results
 
 
+try:
+    from exa_source import exa_jobs
+    _EXA_AVAILABLE = True
+except ImportError:
+    _EXA_AVAILABLE = False
+
 ALL_SOURCES: dict[str, Any] = {
     "greentownlabs": greentownlabs_jobs,
     "linkedin": linkedin_jobs,
     # climatebase: fully Cloudflare-locked (403 on all API/HTML paths)
     # mcj: mcj.vc/jobs 404s since domain migration from mcjcollective.com
     # workonclimate: workonclimate.org/jobs 404s; no working alternative found
+    **({"exa": exa_jobs} if _EXA_AVAILABLE else {}),
 }
