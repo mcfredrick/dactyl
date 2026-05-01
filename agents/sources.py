@@ -10,23 +10,36 @@ TIMEOUT = 20
 
 JOBS_SOURCES = {"greentownlabs", "linkedin"}
 
-# Queries for LinkedIn job search: each combines an ML/AI role term with a climate/sustainability term.
-# The LLM scorer filters false positives; breadth here is intentional.
+# Queries for LinkedIn job search: role term × climate/sustainability term.
+# Covers the full breadth of the candidate's background — ML, audio/video, systems, backend.
+# LLM scorer filters false positives; breadth here is intentional.
 _LINKEDIN_QUERIES = [
+    # ML / AI
     "machine learning climate",
     "machine learning clean energy",
     "machine learning renewable energy",
     "machine learning carbon",
-    "machine learning energy storage",
-    "machine learning solar",
-    "machine learning agriculture",
-    "machine learning food tech",
     "machine learning sustainability",
     "MLOps climate",
+    "AI engineer climate",
+    # Data / backend engineering
     "data engineer climate",
     "data engineer clean energy",
-    "ML engineer sustainability",
-    "AI engineer climate",
+    "software engineer climate tech",
+    "backend engineer clean energy",
+    "platform engineer sustainability",
+    # Audio / video / media
+    "audio engineer climate",
+    "video engineer sustainability",
+    # Systems / C++
+    "C++ engineer clean energy",
+    "systems engineer climate",
+    # Broader climate tech engineering
+    "software engineer renewable energy",
+    "software engineer carbon",
+    "engineer energy storage",
+    "software engineer agriculture tech",
+    "software engineer food tech",
 ]
 
 

@@ -19,28 +19,27 @@ SEEN_FILE = Path(__file__).parent / "seen.json"
 OUTPUT_FILE = Path("/tmp/research.json")
 RELEVANCE_THRESHOLD = 0.6
 
-CANDIDATE_PROFILE = """Senior ML engineer with 5+ years building production ML systems end-to-end:
-- Data pipelines (ingestion, transformation, feature engineering at scale)
-- Model training (distributed training, experiment tracking, hyperparameter optimization)
-- Model serving (low-latency inference, model versioning, A/B testing)
-- Safety & guardrails (output validation, monitoring, drift detection)
-- MLOps infrastructure (CI/CD for models, GPU cluster management, observability)
-- Strong Python, distributed systems, reliability engineering
+CANDIDATE_PROFILE = """Senior software engineer with 5+ years of experience across:
+- ML/AI: model training, inference, MLOps, data pipelines, LLMs
+- Audio/video: real-time processing, codecs, streaming pipelines, DSP
+- Systems: microservices, distributed systems, C++, Python, reliability engineering
+- Broad: backend, APIs, cloud infrastructure, performance optimization
 
-Looking for: remote roles at climate tech, clean energy, sustainability, environmental monitoring,
-ag-tech, grid/energy, carbon accounting, or climate modeling companies. Must involve building or
-owning ML/AI systems in production (not research-only, not pure data science, not pure SWE)."""
+Looking for: remote software engineering roles (any specialization) at climate tech,
+clean energy, sustainability, environmental monitoring, ag-tech, grid/energy,
+carbon accounting, or climate modeling companies. Open to backend, ML, audio/video,
+platform, and infrastructure roles — not looking for pure data science or research."""
 
-SCORING_SYSTEM_PROMPT = f"""You are a job relevance scorer for a senior ML engineer pivoting into climate tech.
+SCORING_SYSTEM_PROMPT = f"""You are a job relevance scorer for a senior software engineer pivoting into climate tech.
 
 Candidate profile:
 {CANDIDATE_PROFILE}
 
 You will receive a list of job postings. For each job, score its relevance to this candidate on a 0.0-1.0 scale:
-- 1.0: Perfect match — remote, production ML/MLOps, climate/energy company
-- 0.8: Strong match — remote, strong ML component, climate-adjacent company
-- 0.6: Decent match — remote, some ML, climate sector
-- Below 0.4: Not a match — research-only, pure SWE, no ML, not remote, or not climate-related
+- 1.0: Perfect match — remote software engineering role at a climate/clean energy company
+- 0.8: Strong match — remote engineering role, climate-adjacent company or strong climate mission
+- 0.6: Decent match — remote, some engineering, loosely climate-related sector
+- Below 0.4: Not a match — not engineering, not remote, not climate-related, or pure research/data science
 
 Return a JSON array with one object per job:
 {{"index": <original_index>, "score": <float 0.0-1.0>, "reason": "<1 sentence why>"}}
