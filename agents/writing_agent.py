@@ -270,6 +270,7 @@ def main() -> None:
     post = write_post(jobs, post_date, model)
 
     output_path = Path("content/posts") / f"{post_date}.md"
+    output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(post)
     print(f"Wrote {output_path}", file=sys.stderr)
 
