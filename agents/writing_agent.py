@@ -93,12 +93,7 @@ def _try_model(content: str, model: str, headers: dict, system_prompt: str = SYS
 
 
 def _has_jobs_section(body: str) -> bool:
-    for section in re.split(r'(?=^## )', body, flags=re.MULTILINE):
-        if not section.startswith("## "):
-            continue
-        if re.search(r'\]\(https?://', section):
-            return True
-    return False
+    return bool(re.search(r'\*\*\[.+?\]\(https?://[^\s)]+\)\*\*', body))
 
 
 def call_llm(content: str, preferred_model: str) -> str:
