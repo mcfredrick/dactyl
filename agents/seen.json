@@ -1,102 +1,6 @@
 {
   "urls": [
     {
-      "url": "https://jobs.lever.co/octoenergy/5273a0f1-a449-4322-a388-980a212fef18?lever-source=Otta",
-      "date": "2026-05-05"
-    },
-    {
-      "url": "https://job-boards.eu.greenhouse.io/openenergytransition/jobs/4769628101",
-      "date": "2026-05-05"
-    },
-    {
-      "url": "https://www.linkedin.com/jobs/view/ml-engineer-senior-at-azx-4318514058",
-      "date": "2026-05-05"
-    },
-    {
-      "url": "https://rs.linkedin.com/jobs/view/senior-machine-learning-engineer-at-loka-4361333987",
-      "date": "2026-05-05"
-    },
-    {
-      "url": "https://climatebase.org/job/69642603/principal-engineer-ai-model-lifecycle",
-      "date": "2026-05-05"
-    },
-    {
-      "url": "https://remoteotter.com/company/energyhub/jobs/remote-senior-software-engineer_753e9e63-47bb-412c-b47a-dfc98692e58d",
-      "date": "2026-05-05"
-    },
-    {
-      "url": "https://www.linkedin.com/jobs/view/ml-engineer-computer-vision-at-gaia-ai-4408024819",
-      "date": "2026-05-05"
-    },
-    {
-      "url": "https://www.linkedin.com/jobs/view/pv-and-energy-storage-remote-operator-data-analyst-at-prism-data-consulting-4408380053",
-      "date": "2026-05-05"
-    },
-    {
-      "url": "https://no.linkedin.com/jobs/view/software-engineer-at-enode-4372320386",
-      "date": "2026-05-05"
-    },
-    {
-      "url": "https://no.linkedin.com/jobs/view/software-engineer-platform-at-enode-4372324285",
-      "date": "2026-05-05"
-    },
-    {
-      "url": "https://de.linkedin.com/jobs/view/full-stack-engineer-at-metrikflow-4403822564",
-      "date": "2026-05-05"
-    },
-    {
-      "url": "https://www.linkedin.com/jobs/view/software-engineer-staff-sr-staff-at-equilibrium-energy-4400313547",
-      "date": "2026-05-05"
-    },
-    {
-      "url": "https://in.linkedin.com/jobs/view/software-engineer-der-integration-iot-energy-systems-at-accurant-international-4400632661",
-      "date": "2026-05-05"
-    },
-    {
-      "url": "https://no.linkedin.com/jobs/view/senior-software-engineer-at-enode-4372337186",
-      "date": "2026-05-05"
-    },
-    {
-      "url": "https://www.linkedin.com/jobs/view/principal-ai-systems-engineer-at-titan-advanced-energy-solutions-4407372235",
-      "date": "2026-05-06"
-    },
-    {
-      "url": "https://www.climatechangecareers.com/job/station-a/remote/senior-software-engineer/",
-      "date": "2026-05-06"
-    },
-    {
-      "url": "https://www.climatechangecareers.com/job/renew-home/united-states-united-states/staff-engineer-energy-intelligence-remote-us/",
-      "date": "2026-05-06"
-    },
-    {
-      "url": "https://jobs.lever.co/octoenergy/5273a0f1-a449-4322-a388-980a212fef18",
-      "date": "2026-05-06"
-    },
-    {
-      "url": "https://jobs.lever.co/mainspringenergy/ed5b3122-906c-48d1-aa44-d5de715871fa",
-      "date": "2026-05-06"
-    },
-    {
-      "url": "https://jobs.lever.co/gridmatic/6a1f912b-be0b-4e0b-bf4f-6c85cdda42ad",
-      "date": "2026-05-06"
-    },
-    {
-      "url": "https://www.linkedin.com/jobs/view/perception-robotics-engineer-at-gaia-ai-4408030839",
-      "date": "2026-05-06"
-    },
-    {
-      "url": "https://uk.linkedin.com/jobs/view/%F0%9F%8C%B3-urgent-x3-tech-leads-api-platform-%F0%9F%8C%B3-golang-php-apis-vue-js-fully-remote-uk-85k-%2B-bonus-series-a-startup-at-areti-group-b-corp%E2%84%A2-4410568369",
-      "date": "2026-05-07"
-    },
-    {
-      "url": "https://www.climatechangecareers.com/job/arcadia/remote/staff-software-engineer/",
-      "date": "2026-05-07"
-    },
-    {
-      "url": "https://www.terra.do/climate-jobs/job-board/functions/eng_software/",
-      "date": "2026-05-07"
-    },
-    {
       "url": "https://www.linkedin.com/jobs/view/software-engineer-fully-remote-at-axiom-cloud-4411436433",
       "date": "2026-05-08"
     },
@@ -2127,6 +2031,158 @@
     {
       "url": "https://cn.linkedin.com/jobs/view/%E5%82%A8%E8%83%BD%E5%B7%A5%E7%A8%8B%E5%B8%88-at-%E5%B9%BF%E5%B7%9E%E5%B8%82%E5%85%86%E8%83%BD%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8-4423708563",
       "date": "2026-07-03"
+    },
+    {
+      "url": "https://jobs.lever.co/gridware/adda173c-a93e-416b-8a0c-77d7e066106e",
+      "date": "2026-07-06"
+    },
+    {
+      "url": "https://jobs.lever.co/gridmatic/c3bb3e8f-fa80-4ff8-9907-dad0f39e4a18",
+      "date": "2026-07-06"
+    },
+    {
+      "url": "https://www.terra.do/climate-jobs/job-board/Founding-Software-Engineer-Carbon-Trail-8371834/",
+      "date": "2026-07-06"
+    },
+    {
+      "url": "https://www.linkedin.com/jobs/view/software-engineer-all-levels-at-kobold-metals-4320400820",
+      "date": "2026-07-06"
+    },
+    {
+      "url": "https://uk.linkedin.com/jobs/view/software-engineer-all-levels-united-kingdom-at-kobold-metals-4391772301",
+      "date": "2026-07-06"
+    },
+    {
+      "url": "https://au.linkedin.com/jobs/view/senior-systems-engineer-national-energy-analysis-centre-at-csiro-4427915447",
+      "date": "2026-07-06"
+    },
+    {
+      "url": "https://ca.linkedin.com/jobs/view/power-system-principal-engineer-at-envision-energy-4431240007",
+      "date": "2026-07-06"
+    },
+    {
+      "url": "https://uk.linkedin.com/jobs/view/trend-bms-engineer-at-loweconex-4435435970",
+      "date": "2026-07-06"
+    },
+    {
+      "url": "https://uk.linkedin.com/jobs/view/grid-engineer-solar-bess-at-climate17-4315416263",
+      "date": "2026-07-06"
+    },
+    {
+      "url": "https://www.linkedin.com/jobs/view/senior-engineer-i-interconnection-at-convergent-energy-and-power-4425403011",
+      "date": "2026-07-06"
+    },
+    {
+      "url": "https://jobs.lever.co/enertechsearch/4af412c1-445a-4dc1-aa02-6ca02f37ebfe",
+      "date": "2026-07-06"
+    },
+    {
+      "url": "https://jobs.lever.co/solarlandscape/3f5c7865-59f3-42ae-9c86-81d514cef8a4",
+      "date": "2026-07-06"
+    },
+    {
+      "url": "https://www.linkedin.com/jobs/view/senior-software-engineer-battery-at-energyhub-4430647146",
+      "date": "2026-07-06"
+    },
+    {
+      "url": "https://www.linkedin.com/jobs/view/sr-optimization-engineer-at-qcells-north-america-4435093953",
+      "date": "2026-07-06"
+    },
+    {
+      "url": "https://www.linkedin.com/jobs/view/senior-staff-machine-learning-engineer-at-terra-ai-4372783598",
+      "date": "2026-07-06"
+    },
+    {
+      "url": "https://uk.linkedin.com/jobs/view/machine-learning-engineer-thermodynamics-at-entrometrix-4433941398",
+      "date": "2026-07-06"
+    },
+    {
+      "url": "https://es.linkedin.com/jobs/view/computer-vision-and-software-engineer-at-neural-grader-4434956913",
+      "date": "2026-07-06"
+    },
+    {
+      "url": "https://www.linkedin.com/jobs/view/director-data-engineering-ml-ai-at-measurabl-4402920083",
+      "date": "2026-07-06"
+    },
+    {
+      "url": "https://uk.linkedin.com/jobs/view/applied-ai-ml-engineer-agents-at-cuspai-4434074685",
+      "date": "2026-07-06"
+    },
+    {
+      "url": "https://uk.linkedin.com/jobs/view/applied-ai-ml-engineer-agents-at-cuspai-4434073693",
+      "date": "2026-07-06"
+    },
+    {
+      "url": "https://es.linkedin.com/jobs/view/platform-engineer-m-f-d-in-renewable-energies-at-encavis-4437135849",
+      "date": "2026-07-06"
+    },
+    {
+      "url": "https://uk.linkedin.com/jobs/view/staff-software-engineer-sustainability-at-samsara-4353992587",
+      "date": "2026-07-06"
+    },
+    {
+      "url": "https://uk.linkedin.com/jobs/view/staff-software-engineer-sustainability-at-samsara-4347883449",
+      "date": "2026-07-06"
+    },
+    {
+      "url": "https://www.linkedin.com/jobs/view/sr-systems-engineer-climate-control-at-rivian-and-volkswagen-group-technologies-4418892367",
+      "date": "2026-07-06"
+    },
+    {
+      "url": "https://cn.linkedin.com/jobs/view/engineer-refrigeration-system-at-trane-technologies-4435226845",
+      "date": "2026-07-06"
+    },
+    {
+      "url": "https://www.linkedin.com/jobs/view/electrical-engineer-at-intuvia-technologies-4431265966",
+      "date": "2026-07-06"
+    },
+    {
+      "url": "https://www.linkedin.com/jobs/view/senior-transmission-line-engineer-eor-at-goldcoast-energy-solutions-4434488035",
+      "date": "2026-07-06"
+    },
+    {
+      "url": "https://www.linkedin.com/jobs/view/power-system-study-engineer-at-rrc-companies-4433888438",
+      "date": "2026-07-06"
+    },
+    {
+      "url": "https://www.linkedin.com/jobs/view/substation-engineer-at-lvi-associates-4404300973",
+      "date": "2026-07-06"
+    },
+    {
+      "url": "https://www.linkedin.com/jobs/view/power-system-engineer-at-thinkingahead-executive-search-4433259651",
+      "date": "2026-07-06"
+    },
+    {
+      "url": "https://es.linkedin.com/jobs/view/software-engineer-intermediate-level-at-station-f-4424563724",
+      "date": "2026-07-06"
+    },
+    {
+      "url": "https://www.linkedin.com/jobs/view/service-operation-engineer-m-f-x-at-hithium-energy-storage-4412705946",
+      "date": "2026-07-06"
+    },
+    {
+      "url": "https://www.linkedin.com/jobs/view/building-energy-efficiency-engineer-at-peachtree-infrastructure-4415929470",
+      "date": "2026-07-06"
+    },
+    {
+      "url": "https://www.linkedin.com/jobs/view/energy-engineer-at-allstem-connections-4431284891",
+      "date": "2026-07-06"
+    },
+    {
+      "url": "https://au.linkedin.com/jobs/view/field-services-engineer-at-hithium-energy-storage-4434922939",
+      "date": "2026-07-06"
+    },
+    {
+      "url": "https://www.linkedin.com/jobs/view/senior-storage-engineer-at-piper-maddox-4425541437",
+      "date": "2026-07-06"
+    },
+    {
+      "url": "https://www.terra.do/climate-jobs/job-board/Climate-Change-Data-Analyst-and-AI-Model-Developer-Understanding-Recruitment-8300359/",
+      "date": "2026-07-06"
+    },
+    {
+      "url": "https://www.wearelegence.com/jobs-make/software-engineer-30231",
+      "date": "2026-07-06"
     }
   ]
 }
