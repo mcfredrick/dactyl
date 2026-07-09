@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Exa-powered deep research source: two-round loop with LLM-driven follow-ups.
 
-Budget design: 5 seed + up to 5 follow-up queries = ~10 Exa requests/run.
-At 22 weekday runs/month: ~220 of the 1000 free monthly requests.
+Budget design: 8 seed + up to 5 follow-up queries = ~13 Exa requests/run.
+At 22 weekday runs/month: ~286 of the 1000 free monthly requests.
 """
 
 import json
@@ -23,7 +23,7 @@ _CANDIDATE_SUMMARY = (
 )
 
 _ATS_DOMAINS = ["jobs.lever.co", "boards.greenhouse.io", "jobs.ashbyhq.com", "apply.workable.com"]
-_CLIMATE_BOARDS = ["wellfound.com", "climatebase.org", "terra.do", "workonclimate.org"]
+_CLIMATE_BOARDS = ["terra.do", "workonclimate.org"]
 
 # (query, include_domains or None)
 _SEED_QUERIES: list[tuple[str, list[str] | None]] = [
@@ -32,6 +32,12 @@ _SEED_QUERIES: list[tuple[str, list[str] | None]] = [
     ("remote data platform engineer carbon grid energy storage", _ATS_DOMAINS),
     ("climate tech software engineer ML remote hiring", _CLIMATE_BOARDS + _ATS_DOMAINS[:2]),
     ("clean energy software engineering remote jobs", None),
+    # Dedicated board queries — Wellfound and YC for high-signal startup coverage
+    ("remote senior software engineer machine learning climate sustainability", ["wellfound.com"]),
+    ("remote software engineer ML backend climate clean energy hiring", ["wellfound.com"]),
+    ("remote software engineer climate energy sustainability", ["workatastartup.com"]),
+    # FDE / solutions / product-adjacent roles at climate AI companies
+    ("forward deployed engineer solutions engineer applied AI climate remote", _ATS_DOMAINS + ["wellfound.com"]),
 ]
 
 _FOLLOW_UP_SYSTEM = f"""\

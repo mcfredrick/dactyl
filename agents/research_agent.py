@@ -17,32 +17,64 @@ from sources import ALL_SOURCES
 OPENROUTER_API = "https://openrouter.ai/api/v1/chat/completions"
 SEEN_FILE = Path(__file__).parent / "seen.json"
 OUTPUT_FILE = Path("/tmp/research.json")
-RELEVANCE_THRESHOLD = 0.6
+RELEVANCE_THRESHOLD = 0.55
 
-CANDIDATE_PROFILE = """Senior software engineer with 5+ years of experience across:
-- ML/AI: model training, inference, MLOps, data pipelines, LLMs
-- Audio/video: real-time processing, codecs, streaming pipelines, DSP
-- Systems: microservices, distributed systems, C++, Python, reliability engineering
-- Broad: backend, APIs, cloud infrastructure, performance optimization
+CANDIDATE_PROFILE = """Matthew Fredrick — Senior AI/ML Software Engineer
+Target: Staff Engineer / Tech Lead in Applied AI at climate tech / impact orgs
+Remote only | $200k+ base target
 
-Looking for: remote software engineering roles (any specialization) at climate tech,
-clean energy, sustainability, environmental monitoring, ag-tech, grid/energy,
-carbon accounting, or climate modeling companies. Open to backend, ML, audio/video,
-platform, and infrastructure roles — not looking for pure data science or research."""
+Core strengths (4 years at Cisco Webex/Collaboration AI):
+- LLM guardrails & safety: content filtering, prompt injection defense, jailbreak prevention, toxicity detection (millions of users, production scale)
+- Synthetic data pipelines: ~90% reduction in data-creation effort; continuous fine-tuning across classification domains
+- MLOps: Airflow, MLflow, W&B CI/CD, model lifecycle management, org-wide standards
+- Computer vision: background blur, virtual backgrounds, relighting pipelines (production, diverse hardware)
+- RAG: OCR + document ingestion from POC to production
+- Cross-functional technical leadership; regular briefings to senior leadership; formal mentorship
 
-SCORING_SYSTEM_PROMPT = f"""You are a job relevance scorer for a senior software engineer pivoting into climate tech.
+Prior: audio/DSP engineering at BandLab (C++, JUCE, VST/AU); audio/ML consulting
+Side projects: shipped iOS app (Noogat), runs two daily engineering digests (Tenkai, Terra)
+
+Stack: Python primary | C++, Rust | PyTorch, TF, HuggingFace, scikit-learn | AWS, Azure, K8s, Docker | Airflow, MLflow, W&B
+
+Best-fit roles: ML platform/infra, applied ML engineering, LLM systems/guardrails, MLOps, CV systems, Staff/Tech Lead with AI ownership
+Also open to: Forward Deployed Engineer (FDE), Solutions Engineer, Applied AI Engineer, Technical Solutions Engineer — roles with more customer/product influence and less pure heads-down coding. These suit his cross-functional leadership experience.
+Poor-fit roles: pure data science / research, roles requiring deep domain expertise he lacks (power engineering, quant finance, pure Java/Go backend with no ML), junior roles, pure sales/pre-sales with no technical depth"""
+
+SCORING_SYSTEM_PROMPT = f"""You are scoring job postings for a specific candidate pivoting into climate tech.
 
 Candidate profile:
 {CANDIDATE_PROFILE}
 
-You will receive a list of job postings. For each job, score its relevance to this candidate on a 0.0-1.0 scale:
-- 1.0: Perfect match — remote software engineering role at a climate/clean energy company
-- 0.8: Strong match — remote engineering role, climate-adjacent company or strong climate mission
-- 0.6: Decent match — remote, some engineering, loosely climate-related sector
-- Below 0.4: Not a match — not engineering, not remote, not climate-related, or pure research/data science
+Score each job on THREE dimensions, then compute a weighted composite:
 
-Return a JSON array with one object per job:
-{{"index": <original_index>, "score": <float 0.0-1.0>, "reason": "<1 sentence why>"}}
+1. climate_score (0–1): Does the company have a genuine climate/clean energy/sustainability mission?
+   - 1.0: Core climate mission (energy storage, grid software, carbon accounting, clean energy, ag-tech, climate ML)
+   - 0.8: Strong climate-adjacent mission
+   - 0.6: Loosely related (some sustainability angle)
+   - 0.3: Peripheral / token mention of climate
+   - 0.0: No climate connection
+
+2. fit_score (0–1): How well do the role requirements match this candidate's actual skills and goals?
+   - 0.9–1.0: Direct match — LLM safety/guardrails, MLOps, synthetic data, CV production systems, ML infra; OR Forward Deployed Engineer / Solutions Engineer roles at AI/ML companies requiring deep technical expertise + customer engagement
+   - 0.7–0.8: Strong match — general ML platform/infra, applied ML engineering, Python + cloud at scale; Staff/Tech Lead with AI product ownership; Technical Solutions Engineer
+   - 0.5–0.6: Partial match — ML-adjacent engineering, some transferable skills, minor gaps
+   - 0.3–0.4: Weak match — significant domain expertise gap (e.g. power systems, quant finance, pure backend no ML)
+   - 0.0–0.2: Poor match — requires expertise candidate clearly doesn't have; or pure pre-sales/non-technical customer success
+
+3. level_score (0–1): Is the role level appropriate for a Staff/Tech Lead target?
+   - 1.0: Staff, Principal, Tech Lead, Engineering Lead, Founding Engineer
+   - 0.8: Senior (current level, one step below target — still worth applying)
+   - 0.5: Mid-level
+   - 0.1: Junior / entry level
+
+Composite score = 0.35 × climate_score + 0.55 × fit_score + 0.10 × level_score
+
+Also extract comp_note: a brief text label of what compensation signals are present.
+Examples: "$200k–$250k + equity", "$150k (below target)", "mentions equity + bonus, no salary", "mentions equity only", "no compensation info"
+Include "unlimited PTO" in comp_note if mentioned.
+
+Return a JSON array — one object per job, in the same order as input:
+{{"index": <int>, "score": <composite 0–1>, "climate_score": <0–1>, "fit_score": <0–1>, "level_score": <0–1>, "level": "<Staff|Senior|Mid|Junior|Unknown>", "comp_note": "<brief string>", "reason": "<1 sentence why or why not>"}}
 
 Return ONLY the JSON array, no preamble."""
 
@@ -51,7 +83,13 @@ def load_seen_urls() -> set[str]:
     if not SEEN_FILE.exists():
         return set()
     data = json.loads(SEEN_FILE.read_text())
-    return {entry["url"] for entry in data.get("urls", [])}
+    # ponytail: apply the same 60-day cutoff here so expiry actually works
+    # without this, URLs block forever if update_seen never fires (zero-job runs)
+    cutoff = datetime.now(tz=timezone.utc) - timedelta(days=60)
+    return {
+        entry["url"] for entry in data.get("urls", [])
+        if datetime.fromisoformat(entry["date"]).replace(tzinfo=timezone.utc) > cutoff
+    }
 
 
 def fetch_all_sources() -> list[dict]:
@@ -213,6 +251,9 @@ def main() -> None:
             "text": job.get("text", ""),
             "relevance_score": score,
             "relevance_reason": score_entry.get("reason", ""),
+            "fit_score": float(score_entry.get("fit_score", 0.0)),
+            "level": score_entry.get("level", "Unknown"),
+            "comp_note": score_entry.get("comp_note", "no compensation info"),
         })
 
     # Sort by relevance descending

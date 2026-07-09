@@ -19,9 +19,9 @@ RESEARCH_FILE = Path("/tmp/research.json")
 SEEN_FILE = Path(__file__).parent / "seen.json"
 
 CANDIDATE_PROFILE_SHORT = (
-    "Senior ML engineer who builds production ML systems end-to-end: "
-    "data pipelines, model training, model serving, safety guardrails, MLOps infrastructure. "
-    "Strong Python and distributed systems. Pivoting from general ML infra into climate tech."
+    "Senior AI/ML engineer at Cisco (4 years) who built LLM guardrails and safety systems at scale, "
+    "synthetic data pipelines, CV production pipelines, MLOps infrastructure (Airflow/MLflow/W&B), and RAG pipelines. "
+    "Targeting Staff/Tech Lead roles. Strong Python, C++; AWS/Azure/K8s. Pivoting into climate tech."
 )
 
 SYSTEM_PROMPT = """You are writing a daily job digest post for Pivot, a blog for senior ML engineers pivoting into climate tech.
@@ -32,8 +32,16 @@ Post structure — write ONLY these two sections, in this order:
 
 ## Today's Jobs
 
-For each job in the input, write a bullet:
-**[Job Title — Company](url)** — 1-2 sentences: what the company actually builds (be specific, not vague), and why this role is a strong match for someone with production ML/MLOps experience.
+For each job in the input, write a bullet in this exact format:
+
+**[Job Title — Company](url)**
+`{level} · {comp_note} · {fit_label}`
+1-2 sentences: what the company actually builds (be specific, not vague), and why this role maps to the candidate's actual skills.
+
+Where:
+- {level} comes from the job's level field (e.g. "Staff", "Senior", "Unknown")
+- {comp_note} comes from the job's comp_note field verbatim
+- {fit_label} is: "Strong fit" if fit_score ≥ 0.75, "Good fit" if ≥ 0.55, "Partial fit" if lower
 
 Be concrete. If it's a grid optimization company, say so. If the role involves model serving infrastructure, say so. Never use: "leverage", "synergy", "game-changer", "impactful", "making a difference", "saving the planet".
 
@@ -165,9 +173,11 @@ def build_writing_prompt(jobs: list[dict]) -> str:
     for job in jobs:
         lines.append(
             f"- [{job['title']} — {job['company']}]({job['url']}) "
-            f"| Score: {job['relevance_score']:.2f} "
-            f"| {job.get('relevance_reason', '')} "
-            f"| Context: {job.get('text', '')[:200]}"
+            f"| level={job.get('level', 'Unknown')} "
+            f"| fit_score={job.get('fit_score', 0):.2f} "
+            f"| comp_note={job.get('comp_note', 'no compensation info')} "
+            f"| reason={job.get('relevance_reason', '')} "
+            f"| context={job.get('text', '')[:200]}"
         )
     return "\n".join(lines)
 
