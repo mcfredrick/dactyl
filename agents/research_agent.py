@@ -256,8 +256,8 @@ def main() -> None:
             "comp_note": score_entry.get("comp_note", "no compensation info"),
         })
 
-    # Sort by relevance descending
-    result_jobs.sort(key=lambda j: j["relevance_score"], reverse=True)
+    # Sort by fit first (most relevant to candidate's skills), composite as tiebreaker
+    result_jobs.sort(key=lambda j: (j["fit_score"], j["relevance_score"]), reverse=True)
 
     print(f"Relevant jobs: {len(result_jobs)}", file=sys.stderr)
 
