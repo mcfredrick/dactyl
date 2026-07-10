@@ -36,8 +36,7 @@ Side projects: shipped iOS app (Noogat), runs two daily engineering digests (Ten
 
 Stack: Python primary | C++, Rust | PyTorch, TF, HuggingFace, scikit-learn | AWS, Azure, K8s, Docker | Airflow, MLflow, W&B
 
-Best-fit roles: ML platform/infra, applied ML engineering, LLM systems/guardrails, MLOps, CV systems, Staff/Tech Lead with AI ownership
-Also open to: Forward Deployed Engineer (FDE), Solutions Engineer, Applied AI Engineer, Technical Solutions Engineer — roles with more customer/product influence and less pure heads-down coding. These suit his cross-functional leadership experience.
+Best-fit roles: general applied AI engineering — any role where the primary job is building AI systems in production. Also open to FDE, Solutions Engineer, Applied AI Engineer, Technical Solutions Engineer for roles with more customer/product influence.
 Poor-fit roles: pure data science / research, roles requiring deep domain expertise he lacks (power engineering, quant finance, pure Java/Go backend with no ML), junior roles, pure sales/pre-sales with no technical depth"""
 
 SCORING_SYSTEM_PROMPT = f"""You are scoring job postings for a specific candidate pivoting into climate tech.
@@ -54,12 +53,12 @@ Score each job on THREE dimensions, then compute a weighted composite:
    - 0.3: Peripheral / token mention of climate
    - 0.0: No climate connection
 
-2. fit_score (0–1): How well do the role requirements match this candidate's actual skills and goals?
-   - 0.9–1.0: Direct match — LLM safety/guardrails, MLOps, synthetic data, CV production systems, ML infra; OR Forward Deployed Engineer / Solutions Engineer roles at AI/ML companies requiring deep technical expertise + customer engagement
-   - 0.7–0.8: Strong match — general ML platform/infra, applied ML engineering, Python + cloud at scale; Staff/Tech Lead with AI product ownership; Technical Solutions Engineer
-   - 0.5–0.6: Partial match — ML-adjacent engineering, some transferable skills, minor gaps
-   - 0.3–0.4: Weak match — significant domain expertise gap (e.g. power systems, quant finance, pure backend no ML)
-   - 0.0–0.2: Poor match — requires expertise candidate clearly doesn't have; or pure pre-sales/non-technical customer success
+2. fit_score (0–1): How well does the role match this candidate's skills and target direction (general applied AI)?
+   - 0.9–1.0: Applied AI role — primary job is building AI systems in production: LLM applications, ML models, AI agents, AI-powered product features, model fine-tuning/serving, AI infra; OR FDE/Solutions Engineer at an AI company requiring deep hands-on ML expertise
+   - 0.7–0.8: Strong adjacent — MLOps/ML platform, Staff/Tech Lead with meaningful AI ownership, technical solutions engineering with ML depth, AI consulting with engineering deliverables
+   - 0.5–0.6: Partial — software engineering with a real ML component, data engineering that directly enables AI, AI-adjacent architecture roles
+   - 0.3–0.4: Weak — minimal AI/ML; requires deep domain expertise he lacks (power systems, quant finance, SCADA); pure backend/infra with no AI scope
+   - 0.0–0.2: Poor — no AI/ML component; pure research or data science without engineering; pre-sales or account management without technical depth
 
 3. level_score (0–1): Is the role level appropriate for a Staff/Tech Lead target?
    - 1.0: Staff, Principal, Tech Lead, Engineering Lead, Founding Engineer
