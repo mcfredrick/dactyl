@@ -108,7 +108,8 @@ def linkedin_jobs() -> list[dict]:
     """Search LinkedIn's guest job API across climate+ML keyword combinations.
 
     Uses the unauthenticated /jobs-guest endpoint — no credentials required.
-    Remote filter (f_WT=2) is applied but imperfect; LLM scorer handles cleanup.
+    Remote filter (f_WT=2) + location=United States keep results to US-remote roles;
+    both are imperfect, so the non-US-subdomain drop and LLM location gate clean up.
     """
     import httpx
     from bs4 import BeautifulSoup
@@ -124,7 +125,7 @@ def linkedin_jobs() -> list[dict]:
         try:
             r = httpx.get(
                 "https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPostings/search",
-                params={"keywords": query, "location": "Worldwide", "f_WT": "2", "f_JT": "F", "start": "0"},
+                params={"keywords": query, "location": "United States", "f_WT": "2", "f_JT": "F", "start": "0"},
                 headers=headers,
                 timeout=TIMEOUT,
             )

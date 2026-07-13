@@ -3,6 +3,7 @@
 
 import json
 import os
+import re
 import sys
 import time
 from datetime import date, datetime, timedelta, timezone
@@ -18,6 +19,11 @@ OPENROUTER_API = "https://openrouter.ai/api/v1/chat/completions"
 SEEN_FILE = Path(__file__).parent / "seen.json"
 OUTPUT_FILE = Path("/tmp/research.json")
 RELEVANCE_THRESHOLD = 0.55
+
+# LinkedIn serves country-specific results from ISO-code subdomains (de., uk., se.).
+# A US-based, no-relocation candidate can't take those, so drop them before scoring.
+# www. and us. are US/global; the LLM location gate catches non-LinkedIn stragglers.
+_NON_US_LINKEDIN = re.compile(r"https?://(?!www\.|us\.)[a-z]{2}\.linkedin\.com", re.I)
 
 CANDIDATE_PROFILE = """Matthew Fredrick — Senior AI/ML Software Engineer
 Target: Staff Engineer / Tech Lead in Applied AI at climate tech / impact orgs
@@ -66,6 +72,12 @@ Score each job on THREE dimensions, then compute a weighted composite:
    - 0.5: Mid-level
    - 0.1: Junior / entry level
 
+Also judge location_ok: can a US-based candidate who will NOT relocate do this job from home in the US?
+   - "yes": remote and open to US applicants — US-remote, North America remote, or global/"worldwide" remote with no country restriction
+   - "no": on-site, hybrid, or remote restricted to a non-US country/region (e.g. "Remote (Germany)", "EU-based only", "Hybrid — London")
+   - "unknown": work arrangement or location not stated
+Base this ONLY on explicit signals in the posting. If unclear, use "unknown", never "no". "no" is disqualifying regardless of the other scores.
+
 Composite score = 0.35 × climate_score + 0.55 × fit_score + 0.10 × level_score
 
 Also extract comp_note: a brief text label of what compensation signals are present.
@@ -73,7 +85,7 @@ Examples: "$200k–$250k + equity", "$150k (below target)", "mentions equity + b
 Include "unlimited PTO" in comp_note if mentioned.
 
 Return a JSON array — one object per job, in the same order as input:
-{{"index": <int>, "score": <composite 0–1>, "climate_score": <0–1>, "fit_score": <0–1>, "level_score": <0–1>, "level": "<Staff|Senior|Mid|Junior|Unknown>", "comp_note": "<brief string>", "reason": "<1 sentence why or why not>"}}
+{{"index": <int>, "score": <composite 0–1>, "climate_score": <0–1>, "fit_score": <0–1>, "level_score": <0–1>, "location_ok": "<yes|no|unknown>", "level": "<Staff|Senior|Mid|Junior|Unknown>", "comp_note": "<brief string>", "reason": "<1 sentence why or why not>"}}
 
 Return ONLY the JSON array, no preamble."""
 
@@ -220,6 +232,8 @@ def main() -> None:
         url = job.get("url", "")
         if not url or url in seen_urls or url in seen_now:
             continue
+        if _NON_US_LINKEDIN.match(url):
+            continue
         seen_now.add(url)
         deduped.append(job)
 
@@ -242,6 +256,8 @@ def main() -> None:
         score_entry = scored_map.get(i, {})
         score = float(score_entry.get("score", 0.0))
         if score < RELEVANCE_THRESHOLD:
+            continue
+        if score_entry.get("location_ok") == "no":
             continue
         result_jobs.append({
             "title": job.get("title", ""),
