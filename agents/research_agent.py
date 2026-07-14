@@ -208,6 +208,19 @@ _ARRANGEMENT_KW = re.compile(
     r"\b(remote|hybrid|on-?site|in[- ]person|in[- ]office|in the office|relocat\w*|"
     r"work from home|wfh|must be (?:located|based)|based in)\b", re.I)
 
+# High-confidence on-site/hybrid phrases the free-tier LLM judge misses. Deliberately narrow to
+# avoid false-dropping remote roles: bare "on-site" (e.g. "on-site visits") and "hybrid-remote"
+# company blurbs are NOT matched — only explicit role arrangements.
+_STRONG_ONSITE = re.compile(
+    r"in[- ](?:the )?office\s+\d"                              # "in the office 5 days"
+    r"|\d\+?\s*days?\s+(?:a|per)\s+week\s+in[- ](?:the )?office"
+    r"|on-?site,?\s+full[- ]time"                             # "on-site, full-time position"
+    r"|(?:primarily|fully|strictly|100%)\s+on-?site"
+    r"|this is an?\s+(?:on-?site|in-person)\s+(?:position|role)"
+    r"|relocation required|must relocate|required to relocate"
+    r"|(?<!not a )hybrid\s+(?:role|position|schedule)",       # a hybrid role, not "not a hybrid role"
+    re.I)
+
 
 def fetch_linkedin_description(url: str) -> str | None:
     """Fetch a LinkedIn job's location-relevant excerpt via the guest endpoint.
@@ -264,6 +277,9 @@ def verify_finalist_locations(jobs: list[dict], preferred_model: str) -> list[di
     if not enriched:
         return jobs
 
+    # Deterministic backstop first — catches unambiguous on-site/hybrid even if the LLM misses or is down.
+    drop = {id(j) for j, d in enriched if _STRONG_ONSITE.search(d)}
+
     content = "\n".join(f"[{i}] {j['title']} — {d}" for i, (j, d) in enumerate(enriched))
     candidates = build_candidate_list(preferred_model, os.environ.get("OPENROUTER_API_KEY", ""))
     verdicts = None
@@ -273,14 +289,13 @@ def verify_finalist_locations(jobs: list[dict], preferred_model: str) -> list[di
             break
         time.sleep(5)
     if verdicts is None:
-        print("  Location verify unavailable, keeping all finalists", file=sys.stderr)
-        return jobs
+        print("  Location verify LLM unavailable; deterministic backstop only", file=sys.stderr)
+    else:
+        for v in verdicts:
+            idx = v.get("index", -1)
+            if v.get("location_ok") == "no" and 0 <= idx < len(enriched):
+                drop.add(id(enriched[idx][0]))
 
-    drop = set()
-    for v in verdicts:
-        idx = v.get("index", -1)
-        if v.get("location_ok") == "no" and 0 <= idx < len(enriched):
-            drop.add(id(enriched[idx][0]))
     kept = [j for j in jobs if id(j) not in drop]
     print(f"  Location verify: dropped {len(jobs) - len(kept)} on-site/hybrid finalist(s)", file=sys.stderr)
     return kept
