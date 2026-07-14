@@ -124,20 +124,15 @@ def fetch_all_sources() -> list[dict]:
     return jobs
 
 
-def score_jobs_batch(jobs: list[dict], model: str) -> list[dict] | None:
-    """Score a batch of jobs. Returns list of {index, score, reason} or None on failure."""
-    lines = []
-    for i, job in enumerate(jobs):
-        lines.append(f"[{i}] {job.get('title', '')} at {job.get('company', '')} — {job.get('text', '')[:200]}")
-
-    content = "\n".join(lines)
+def _chat_json(system: str, user: str, model: str, temperature: float = 0.2) -> list | None:
+    """POST system+user to OpenRouter, return the parsed JSON array. None on failure; 429 backoff."""
     payload = {
         "model": model,
         "messages": [
-            {"role": "system", "content": SCORING_SYSTEM_PROMPT},
-            {"role": "user", "content": content},
+            {"role": "system", "content": system},
+            {"role": "user", "content": user},
         ],
-        "temperature": 0.2,
+        "temperature": temperature,
     }
     headers = {
         "Authorization": f"Bearer {os.environ['OPENROUTER_API_KEY']}",
@@ -161,11 +156,20 @@ def score_jobs_batch(jobs: list[dict], model: str) -> list[dict] | None:
                 return []
             return json.loads(text[start:end])
         except Exception as e:
-            print(f"  Score batch failed (attempt {attempt + 1}): {e}", file=sys.stderr)
+            print(f"  LLM call failed (attempt {attempt + 1}): {e}", file=sys.stderr)
             if attempt < 2:
                 time.sleep(2 ** attempt * 3)
 
     return None
+
+
+def score_jobs_batch(jobs: list[dict], model: str) -> list[dict] | None:
+    """Score a batch of jobs. Returns list of {index, score, reason} or None on failure."""
+    lines = [
+        f"[{i}] {job.get('title', '')} at {job.get('company', '')} — {job.get('text', '')[:200]}"
+        for i, job in enumerate(jobs)
+    ]
+    return _chat_json(SCORING_SYSTEM_PROMPT, "\n".join(lines), model)
 
 
 def score_jobs(jobs: list[dict], preferred_model: str) -> list[dict]:
@@ -247,39 +251,29 @@ Judge location_ok from the job description:
 Return ONLY a JSON array: [{"index": <int>, "location_ok": "<yes|no|unknown>"}]"""
 
 
-def verify_finalist_locations(jobs: list[dict], model: str) -> list[dict]:
+def verify_finalist_locations(jobs: list[dict], preferred_model: str) -> list[dict]:
     """Re-check LinkedIn finalists against their full description; drop stated on-site/hybrid/non-US.
 
     The initial scorer only sees the location string (the search card has no arrangement signal),
     so on-site/hybrid roles leak through. Here we fetch each LinkedIn finalist's description — the
-    only unauthenticated signal — and let the LLM judge. Fail-open: any fetch/LLM error or an
-    "unknown" verdict keeps the job.
+    only unauthenticated signal — and let the LLM judge, retrying across candidate models with
+    429 backoff (this call runs after scoring, when the free-tier rate window is tightest).
+    Fail-open: exhausting all models, any fetch error, or an "unknown" verdict keeps the job.
     """
     enriched = [(j, d) for j in jobs if (d := fetch_linkedin_description(j["url"]))]
     if not enriched:
         return jobs
 
-    lines = [f"[{i}] {j['title']} — {d}" for i, (j, d) in enumerate(enriched)]
-    payload = {
-        "model": model,
-        "messages": [
-            {"role": "system", "content": LOCATION_CHECK_SYSTEM},
-            {"role": "user", "content": "\n".join(lines)},
-        ],
-        "temperature": 0.1,
-    }
-    headers = {
-        "Authorization": f"Bearer {os.environ['OPENROUTER_API_KEY']}",
-        "HTTP-Referer": BLOG_URL,
-        "X-Title": f"{BLOG_NAME} Research Agent",
-    }
-    try:
-        r = httpx.post(OPENROUTER_API, json=payload, headers=headers, timeout=120)
-        r.raise_for_status()
-        text = r.json()["choices"][0]["message"]["content"]
-        verdicts = json.loads(text[text.find("["):text.rfind("]") + 1])
-    except Exception as e:
-        print(f"  Location verify failed, keeping all finalists: {e}", file=sys.stderr)
+    content = "\n".join(f"[{i}] {j['title']} — {d}" for i, (j, d) in enumerate(enriched))
+    candidates = build_candidate_list(preferred_model, os.environ.get("OPENROUTER_API_KEY", ""))
+    verdicts = None
+    for model in candidates[:5]:
+        verdicts = _chat_json(LOCATION_CHECK_SYSTEM, content, model, temperature=0.1)
+        if verdicts is not None:
+            break
+        time.sleep(5)
+    if verdicts is None:
+        print("  Location verify unavailable, keeping all finalists", file=sys.stderr)
         return jobs
 
     drop = set()
