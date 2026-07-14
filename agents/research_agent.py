@@ -25,6 +25,12 @@ RELEVANCE_THRESHOLD = 0.55
 # www. and us. are US/global; the LLM location gate catches non-LinkedIn stragglers.
 _NON_US_LINKEDIN = re.compile(r"https?://(?!www\.|us\.)[a-z]{2}\.linkedin\.com", re.I)
 
+# LinkedIn's f_WT=2 remote filter leaks and the search card carries no workplace-type badge
+# (it's rendered client-side, absent from every unauthenticated endpoint). The job description
+# prose is the only signal we can fetch, so we re-check finalists against it below.
+_LINKEDIN_JOB_RE = re.compile(r"linkedin\.com/jobs/view/[^/?]*?-(\d{8,})", re.I)
+_BROWSER_UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+
 CANDIDATE_PROFILE = """Matthew Fredrick — Senior AI/ML Software Engineer
 Target: Staff Engineer / Tech Lead in Applied AI at climate tech / impact orgs
 Remote only | $200k+ base target
@@ -194,6 +200,98 @@ def score_jobs(jobs: list[dict], preferred_model: str) -> list[dict]:
     return all_scores
 
 
+_ARRANGEMENT_KW = re.compile(
+    r"\b(remote|hybrid|on-?site|in[- ]person|in[- ]office|in the office|relocat\w*|"
+    r"work from home|wfh|must be (?:located|based)|based in)\b", re.I)
+
+
+def fetch_linkedin_description(url: str) -> str | None:
+    """Fetch a LinkedIn job's location-relevant excerpt via the guest endpoint.
+
+    The work-arrangement statement can sit deep in the body (offsets past 5 KB observed), so
+    head-truncation misses it. Return the head plus a window around every arrangement keyword —
+    full signal coverage, small payload. None if not LinkedIn or on failure.
+    """
+    m = _LINKEDIN_JOB_RE.search(url)
+    if not m:
+        return None
+    try:
+        r = httpx.get(
+            f"https://www.linkedin.com/jobs-guest/jobs/api/jobPosting/{m.group(1)}",
+            headers={"User-Agent": _BROWSER_UA},
+            timeout=20,
+        )
+        if r.status_code != 200:
+            return None
+    except Exception:
+        return None
+    text = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", r.text)).strip()
+    if not text:
+        return None
+    windows, used = [], 0
+    for w in _ARRANGEMENT_KW.finditer(text):
+        windows.append(text[max(0, w.start() - 120): w.end() + 120])
+        used += len(windows[-1])
+        if used > 1000:
+            break
+    return text[:400] + (" … " + " … ".join(windows) if windows else "")
+
+
+LOCATION_CHECK_SYSTEM = """You decide if a job is doable by a US-based candidate who will NOT relocate and must work from home in the US.
+
+Judge location_ok from the job description:
+- "no": on-site, hybrid, in-person / in-office requirement, or remote restricted to a non-US country/region. Do NOT mark "no" for text that merely says on-site is NOT required.
+- "yes": fully remote and open to US applicants (US remote, North America remote, or worldwide remote).
+- "unknown": work arrangement not clearly stated.
+
+Return ONLY a JSON array: [{"index": <int>, "location_ok": "<yes|no|unknown>"}]"""
+
+
+def verify_finalist_locations(jobs: list[dict], model: str) -> list[dict]:
+    """Re-check LinkedIn finalists against their full description; drop stated on-site/hybrid/non-US.
+
+    The initial scorer only sees the location string (the search card has no arrangement signal),
+    so on-site/hybrid roles leak through. Here we fetch each LinkedIn finalist's description — the
+    only unauthenticated signal — and let the LLM judge. Fail-open: any fetch/LLM error or an
+    "unknown" verdict keeps the job.
+    """
+    enriched = [(j, d) for j in jobs if (d := fetch_linkedin_description(j["url"]))]
+    if not enriched:
+        return jobs
+
+    lines = [f"[{i}] {j['title']} — {d}" for i, (j, d) in enumerate(enriched)]
+    payload = {
+        "model": model,
+        "messages": [
+            {"role": "system", "content": LOCATION_CHECK_SYSTEM},
+            {"role": "user", "content": "\n".join(lines)},
+        ],
+        "temperature": 0.1,
+    }
+    headers = {
+        "Authorization": f"Bearer {os.environ['OPENROUTER_API_KEY']}",
+        "HTTP-Referer": BLOG_URL,
+        "X-Title": f"{BLOG_NAME} Research Agent",
+    }
+    try:
+        r = httpx.post(OPENROUTER_API, json=payload, headers=headers, timeout=120)
+        r.raise_for_status()
+        text = r.json()["choices"][0]["message"]["content"]
+        verdicts = json.loads(text[text.find("["):text.rfind("]") + 1])
+    except Exception as e:
+        print(f"  Location verify failed, keeping all finalists: {e}", file=sys.stderr)
+        return jobs
+
+    drop = set()
+    for v in verdicts:
+        idx = v.get("index", -1)
+        if v.get("location_ok") == "no" and 0 <= idx < len(enriched):
+            drop.add(id(enriched[idx][0]))
+    kept = [j for j in jobs if id(j) not in drop]
+    print(f"  Location verify: dropped {len(jobs) - len(kept)} on-site/hybrid finalist(s)", file=sys.stderr)
+    return kept
+
+
 def update_seen(new_urls: list[str], post_date: str) -> None:
     cutoff = datetime.now(tz=timezone.utc) - timedelta(days=60)
 
@@ -271,6 +369,7 @@ def main() -> None:
             "comp_note": score_entry.get("comp_note", "no compensation info"),
         })
 
+    result_jobs = verify_finalist_locations(result_jobs, model)
     result_jobs.sort(key=lambda j: j["relevance_score"], reverse=True)
 
     print(f"Relevant jobs: {len(result_jobs)}", file=sys.stderr)
