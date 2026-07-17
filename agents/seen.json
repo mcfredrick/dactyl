@@ -1,18 +1,6 @@
 {
   "urls": [
     {
-      "url": "https://www.linkedin.com/jobs/view/ml-engineer-computer-vision-at-gaia-ai-4412585377",
-      "date": "2026-05-18"
-    },
-    {
-      "url": "https://es.linkedin.com/jobs/view/computer-vision-and-software-engineer-at-neural-grader-4403714943",
-      "date": "2026-05-18"
-    },
-    {
-      "url": "https://www.linkedin.com/jobs/view/senior-software-engineer-azure-at-qcells-north-america-4408961522",
-      "date": "2026-05-18"
-    },
-    {
       "url": "https://www.climatechangecareers.com/job/aurora-solar/remote/senior-software-engineer-consumer/",
       "date": "2026-05-19"
     },
@@ -2811,6 +2799,10 @@
     {
       "url": "https://wellfound.com/jobs/4102166-senior-software-engineer-applied-ml",
       "date": "2026-07-16"
+    },
+    {
+      "url": "https://www.linkedin.com/jobs/view/senior-data-scientist-remote-at-lg-energy-solution-4437076096",
+      "date": "2026-07-17"
     }
   ]
 }
