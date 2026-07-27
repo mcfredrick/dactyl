@@ -1,174 +1,6 @@
 {
   "urls": [
     {
-      "url": "https://uk.linkedin.com/jobs/view/front-office-mlops-engineer-at-habitat-energy-4417073160",
-      "date": "2026-05-26"
-    },
-    {
-      "url": "https://www.linkedin.com/jobs/view/machine-learning-operations-engineer-at-windborne-systems-4413750453",
-      "date": "2026-05-26"
-    },
-    {
-      "url": "https://www.linkedin.com/jobs/view/senior-mlops-engineer-at-climateai-4412853652",
-      "date": "2026-05-26"
-    },
-    {
-      "url": "https://ca.linkedin.com/jobs/view/ml-ops-engineer-m-f-d-at-enercon-4405644102",
-      "date": "2026-05-26"
-    },
-    {
-      "url": "https://uk.linkedin.com/jobs/view/senior-backend-engineer-at-octopus-energy-4402265051",
-      "date": "2026-05-26"
-    },
-    {
-      "url": "https://www.linkedin.com/jobs/view/staff-ai-engineer-grafana-ops-ai-ml-usa-remote-at-grafana-labs-4346438948",
-      "date": "2026-05-27"
-    },
-    {
-      "url": "https://ca.linkedin.com/jobs/view/staff-ai-engineer-grafana-ops-ai-ml-canada-remote-at-grafana-labs-4346487893",
-      "date": "2026-05-27"
-    },
-    {
-      "url": "https://www.linkedin.com/jobs/view/senior-software-engineer-energy-systems-at-david-energy-4417444237",
-      "date": "2026-05-27"
-    },
-    {
-      "url": "https://www.remoterocketship.com/company/gridx-ai/jobs/senior-go-golang-software-engineer-energy-management-germany-remote/",
-      "date": "2026-05-27"
-    },
-    {
-      "url": "https://uk.linkedin.com/jobs/view/full-stack-engineer-%C2%A360k-%C2%A380k-%2B-equity-at-iot-climate-tech-startup-at-jack-jill-4415023169",
-      "date": "2026-05-27"
-    },
-    {
-      "url": "https://uk.linkedin.com/jobs/view/senior-principal-platform-engineer-at-paebbl-4401484312",
-      "date": "2026-05-27"
-    },
-    {
-      "url": "https://uk.linkedin.com/jobs/view/converter-control-software-engineer-at-siemens-gamesa-4409964187",
-      "date": "2026-05-27"
-    },
-    {
-      "url": "https://uk.linkedin.com/jobs/view/product-engineer-at-metris-energy-4383814783",
-      "date": "2026-05-27"
-    },
-    {
-      "url": "https://uk.linkedin.com/jobs/view/operational-technology-integration-engineer-at-w%C3%A4rtsil%C3%A4-energy-storage-4419515376",
-      "date": "2026-05-27"
-    },
-    {
-      "url": "https://uk.linkedin.com/jobs/view/firmware-development-engineer-at-myenergi-4415116235",
-      "date": "2026-05-27"
-    },
-    {
-      "url": "https://de.linkedin.com/jobs/view/iot-platform-engineer-energy-systems-f-m-d-at-fion-energy-4410607520",
-      "date": "2026-05-27"
-    },
-    {
-      "url": "https://nl.linkedin.com/jobs/view/software-engineer-at-zonneplan-4324868940",
-      "date": "2026-05-27"
-    },
-    {
-      "url": "https://jobs.lever.co/EnergyVault/bce98e6f-04ca-4e26-a300-60e70de3536b",
-      "date": "2026-05-27"
-    },
-    {
-      "url": "https://www.linkedin.com/jobs/view/sr-software-machine-learning-engineer-energy-optimization-at-tesla-4420203966",
-      "date": "2026-05-28"
-    },
-    {
-      "url": "https://www.linkedin.com/jobs/view/staff-machine-learning-engineer-energy-charging-at-tesla-4420215687",
-      "date": "2026-05-28"
-    },
-    {
-      "url": "https://www.linkedin.com/jobs/view/software-engineer-industrial-energy-products-at-tesla-4420205872",
-      "date": "2026-05-28"
-    },
-    {
-      "url": "https://www.linkedin.com/jobs/view/embedded-software-engineer-tesla-energy-at-tesla-4419112466",
-      "date": "2026-05-28"
-    },
-    {
-      "url": "https://jobs.ashbyhq.com/ostrom/8d08b349-f0ca-40ff-bf68-d662e64188ea",
-      "date": "2026-05-28"
-    },
-    {
-      "url": "https://jaabz.com/jobs/219288-software-engineer-iii",
-      "date": "2026-05-28"
-    },
-    {
-      "url": "https://www.linkedin.com/jobs/view/ml-ops-engineer-at-habitat-energy-4416166743",
-      "date": "2026-05-28"
-    },
-    {
-      "url": "https://ph.linkedin.com/jobs/view/machine-learning-engineer-market-signals-forecasting-carbon-energy-at-carbon-insights-4417299801",
-      "date": "2026-05-28"
-    },
-    {
-      "url": "https://www.linkedin.com/jobs/view/software-engineer-full-stack-agentic-ai-at-convoy-health-4410595538",
-      "date": "2026-05-28"
-    },
-    {
-      "url": "https://www.linkedin.com/jobs/view/ai-engineer-at-oati-4411245682",
-      "date": "2026-05-28"
-    },
-    {
-      "url": "https://www.linkedin.com/jobs/view/machine-learning-engineer-at-gotion-inc-4335254636",
-      "date": "2026-05-28"
-    },
-    {
-      "url": "https://uk.linkedin.com/jobs/view/machine-learning-engineer-at-gigaton-4411628407",
-      "date": "2026-05-28"
-    },
-    {
-      "url": "https://uk.linkedin.com/jobs/view/systems-ai-engineer-at-entrometrix-4420297084",
-      "date": "2026-05-28"
-    },
-    {
-      "url": "https://www.linkedin.com/jobs/view/data-center-grid-and-power-solution-engineer-at-trinasolar-4417621757",
-      "date": "2026-05-28"
-    },
-    {
-      "url": "https://in.linkedin.com/jobs/view/full-stack-engineer-at-energin-4418241316",
-      "date": "2026-05-28"
-    },
-    {
-      "url": "https://uk.linkedin.com/jobs/view/full-stack-engineer-%C2%A360k-%C2%A380k-%2B-equity-at-iot-climate-tech-startup-at-jack-jill-4418876402",
-      "date": "2026-05-28"
-    },
-    {
-      "url": "https://au.linkedin.com/jobs/view/staff-platform-engineer-at-gridsight-4419949446",
-      "date": "2026-05-28"
-    },
-    {
-      "url": "https://au.linkedin.com/jobs/view/engineer-at-kaluza-4410357568",
-      "date": "2026-05-28"
-    },
-    {
-      "url": "https://uk.linkedin.com/jobs/view/senior-software-engineer-at-tnei-4419408775",
-      "date": "2026-05-28"
-    },
-    {
-      "url": "https://www.linkedin.com/jobs/view/senior-full-stack-engineer-at-orchard-4392823810",
-      "date": "2026-05-28"
-    },
-    {
-      "url": "https://jobs.lever.co/kpler/b8cca023-f9c4-4ece-87e9-4bbd1b538da8",
-      "date": "2026-05-28"
-    },
-    {
-      "url": "https://jobs.lever.co/gridmatic/fef43ee6-b864-43bf-9f98-b8917c8b1f78",
-      "date": "2026-05-28"
-    },
-    {
-      "url": "https://climatebase.org/job/71646533/machine-learning-engineer",
-      "date": "2026-05-28"
-    },
-    {
-      "url": "https://jobs.lever.co/goodleap/5fc88473-7da4-4b94-a469-cfb7c3df9965",
-      "date": "2026-05-28"
-    },
-    {
       "url": "https://apply.workable.com/habitat-energy/j/0A3F5B3894",
       "date": "2026-05-29"
     },
@@ -2483,6 +2315,82 @@
     {
       "url": "https://www.linkedin.com/jobs/view/ai-product-engineer-%24150k-%24250k-%2B-equity-at-crux-at-jack-jill-4444097944",
       "date": "2026-07-24"
+    },
+    {
+      "url": "https://www.terra.do/climate-jobs/job-board/software-engineer-ml-platform-staff-sr-staff-8380002/",
+      "date": "2026-07-27"
+    },
+    {
+      "url": "https://www.linkedin.com/jobs/view/ai-software-engineer-at-liquidity-services-4445277210",
+      "date": "2026-07-27"
+    },
+    {
+      "url": "https://www.terra.do/climate-jobs/job-board/senior-software-engineer-aipowered-clean-energy-platform-8379228/",
+      "date": "2026-07-27"
+    },
+    {
+      "url": "https://www.linkedin.com/jobs/view/founding-software-engineer-%2B-equity-at-made-at-jack-jill-4444877396",
+      "date": "2026-07-27"
+    },
+    {
+      "url": "https://www.workatastartup.com/jobs/75748",
+      "date": "2026-07-27"
+    },
+    {
+      "url": "https://jobs.lever.co/thalolabs/1660baa0-a16c-463b-b605-b7b3afca863a",
+      "date": "2026-07-27"
+    },
+    {
+      "url": "https://jobs.ashbyhq.com/treefera/b814e3e3-2b63-4a5d-a537-943e629e7a70",
+      "date": "2026-07-27"
+    },
+    {
+      "url": "https://www.linkedin.com/jobs/view/senior-software-engineer-simulation-algorithm-at-rise-technical-4441805768",
+      "date": "2026-07-27"
+    },
+    {
+      "url": "https://hiresub.infinityfree.me/job/senior-full-stack-software-engineer-solar-design-tools-5e5a5c31",
+      "date": "2026-07-27"
+    },
+    {
+      "url": "https://www.linkedin.com/jobs/view/embedded-software-engineer-remote-at-fuse-energy-4445351537",
+      "date": "2026-07-27"
+    },
+    {
+      "url": "https://wellfound.com/company/camus-energy/jobs",
+      "date": "2026-07-27"
+    },
+    {
+      "url": "https://jobs.lever.co/gridware/ffe216c9-1fb4-4e35-87a6-af89ab08c28c",
+      "date": "2026-07-27"
+    },
+    {
+      "url": "https://www.smartremotejobs.com/offer/senior-backend-engineer-10217/",
+      "date": "2026-07-27"
+    },
+    {
+      "url": "https://www.workatastartup.com/companies/nectar",
+      "date": "2026-07-27"
+    },
+    {
+      "url": "https://jobs.lever.co/omnidian/4f8e7758-e225-42cd-bd42-54a6b841f9a5",
+      "date": "2026-07-27"
+    },
+    {
+      "url": "https://jobs.ashbyhq.com/trawa/ddf52300-2d5f-47cc-b49f-7fcd3626ab5b",
+      "date": "2026-07-27"
+    },
+    {
+      "url": "https://jobs.lever.co/mainspringenergy/b442052c-9732-496b-997e-5f1c31cd96cd",
+      "date": "2026-07-27"
+    },
+    {
+      "url": "https://flexgen.zya.me/job/software-engineer-fully-remote",
+      "date": "2026-07-27"
+    },
+    {
+      "url": "https://www.linkedin.com/jobs/view/senior-software-engineer-route-execution-at-samsara-4356633753",
+      "date": "2026-07-27"
     }
   ]
 }
