@@ -154,7 +154,12 @@ def _chat_json(system: str, user: str, model: str, temperature: float = 0.2) -> 
             end = text.rfind("]") + 1
             if start == -1 or end == 0:
                 return []
-            return json.loads(text[start:end])
+            parsed = json.loads(text[start:end])
+            if isinstance(parsed, list) and all(isinstance(item, dict) for item in parsed):
+                return parsed
+            print(f"  LLM returned non-dict items (attempt {attempt + 1}), retrying...", file=sys.stderr)
+            if attempt < 2:
+                time.sleep(2 ** attempt * 3)
         except Exception as e:
             print(f"  LLM call failed (attempt {attempt + 1}): {e}", file=sys.stderr)
             if attempt < 2:
