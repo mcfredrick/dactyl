@@ -1,4 +1,36 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Jobs on Pivot</title><link>https://mcfredrick.github.io/dactyl/tags/jobs/</link><description>Recent content in Jobs on Pivot</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Wed, 09 Sep 2026 09:00:00 +0000</lastBuildDate><atom:link href="https://mcfredrick.github.io/dactyl/tags/jobs/index.xml" rel="self" type="application/rss+xml"/><item><title>2026-09-09</title><link>https://mcfredrick.github.io/dactyl/posts/2026-09-09/</link><pubDate>Wed, 09 Sep 2026 09:00:00 +0000</pubDate><guid>https://mcfredrick.github.io/dactyl/posts/2026-09-09/</guid><description>&lt;h2 id="todays-jobs">Today&amp;rsquo;s Jobs&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Jobs on Pivot</title><link>https://mcfredrick.github.io/dactyl/tags/jobs/</link><description>Recent content in Jobs on Pivot</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Thu, 10 Sep 2026 09:00:00 +0000</lastBuildDate><atom:link href="https://mcfredrick.github.io/dactyl/tags/jobs/index.xml" rel="self" type="application/rss+xml"/><item><title>2026-09-10</title><link>https://mcfredrick.github.io/dactyl/posts/2026-09-10/</link><pubDate>Thu, 10 Sep 2026 09:00:00 +0000</pubDate><guid>https://mcfredrick.github.io/dactyl/posts/2026-09-10/</guid><description>&lt;p>Here&amp;rsquo;s a thinking process:&lt;/p>
+&lt;ol>
+&lt;li>&lt;strong>Analyze the Request:&lt;/strong>&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>I need to write a daily job digest post for Pivot (blog for senior ML engineers pivoting into climate tech)&lt;/li>
+&lt;li>Reader: senior ML engineer (5+ years, production systems) exploring climate tech careers&lt;/li>
+&lt;li>I need to output ONLY two sections in order: &amp;ldquo;## Today&amp;rsquo;s Jobs&amp;rdquo; and then the jobs listed&lt;/li>
+&lt;li>Wait, the structure says: &amp;ldquo;write ONLY these two sections, in this order: ## Today&amp;rsquo;s Jobs, ## Today&amp;rsquo;s Pick&amp;rdquo;&lt;/li>
+&lt;li>But then it says: &amp;ldquo;(This section is added separately — do NOT write it.)&amp;rdquo; for &amp;ldquo;## Today&amp;rsquo;s Pick&amp;rdquo;&lt;/li>
+&lt;li>So I should ONLY write the &amp;ldquo;## Today&amp;rsquo;s Jobs&amp;rdquo; section, with the bullet points for each job.&lt;/li>
+&lt;li>Rules for the jobs section:
+&lt;ul>
+&lt;li>For each job, write a bullet in exact format: &lt;strong>&lt;a href="url">Job Title — Company&lt;/a>&lt;/strong>&lt;/li>
+&lt;li>Then on the next line: &lt;code>{level} · {comp_note} · {fit_label}&lt;/code>&lt;/li>
+&lt;li>Then 1-2 sentences: what the company actually builds (be specific, not vague), and why this role maps to the candidate&amp;rsquo;s actual skills.&lt;/li>
+&lt;li>Where:
+&lt;ul>
+&lt;li>{level} from job&amp;rsquo;s level field&lt;/li>
+&lt;li>{comp_note} from job&amp;rsquo;s comp_note field verbatim&lt;/li>
+&lt;li>{fit_label}: &amp;ldquo;Strong fit&amp;rdquo; if fit_score ≥ 0.75, &amp;ldquo;Good fit&amp;rdquo; if ≥ 0.55, &amp;ldquo;Partial fit&amp;rdquo; if lower&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Be concrete. If grid optimization company, say so. If role involves model serving infrastructure, say so.&lt;/li>
+&lt;li>Never use: &amp;ldquo;leverage&amp;rdquo;, &amp;ldquo;synergy&amp;rdquo;, &amp;ldquo;game-changer&amp;rdquo;, &amp;ldquo;impactful&amp;rdquo;, &amp;ldquo;making a difference&amp;rdquo;, &amp;ldquo;saving the planet&amp;rdquo;.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>I need to process 9 jobs given in the input.&lt;/li>
+&lt;li>Let me list them out clearly:&lt;/li>
+&lt;/ul>
+&lt;ol>
+&lt;li>
+&lt;p>Remote Senior AI Product Engineer for a Climate Tech SaaS company at Pearltalent — J&lt;/p></description></item><item><title>2026-09-09</title><link>https://mcfredrick.github.io/dactyl/posts/2026-09-09/</link><pubDate>Wed, 09 Sep 2026 09:00:00 +0000</pubDate><guid>https://mcfredrick.github.io/dactyl/posts/2026-09-09/</guid><description>&lt;h2 id="todays-jobs">Today&amp;rsquo;s Jobs&lt;/h2>
 &lt;ul>
 &lt;li>
 &lt;p>&lt;strong>&lt;a href="https://www.linkedin.com/jobs/view/senior-machine-learning-engineer-at-carbon-mapper-4464645329">Senior Machine Learning Engineer — Carbon Mapper&lt;/a>&lt;/strong>
