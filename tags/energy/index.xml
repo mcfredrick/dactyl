@@ -1,4 +1,16 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Energy on Pivot</title><link>https://mcfredrick.github.io/dactyl/tags/energy/</link><description>Recent content in Energy on Pivot</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 14 Sep 2026 09:00:00 +0000</lastBuildDate><atom:link href="https://mcfredrick.github.io/dactyl/tags/energy/index.xml" rel="self" type="application/rss+xml"/><item><title>2026-09-14</title><link>https://mcfredrick.github.io/dactyl/posts/2026-09-14/</link><pubDate>Mon, 14 Sep 2026 09:00:00 +0000</pubDate><guid>https://mcfredrick.github.io/dactyl/posts/2026-09-14/</guid><description>&lt;h2 id="todays-jobs">Today&amp;rsquo;s Jobs&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Energy on Pivot</title><link>https://mcfredrick.github.io/dactyl/tags/energy/</link><description>Recent content in Energy on Pivot</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Tue, 15 Sep 2026 09:00:00 +0000</lastBuildDate><atom:link href="https://mcfredrick.github.io/dactyl/tags/energy/index.xml" rel="self" type="application/rss+xml"/><item><title>2026-09-15</title><link>https://mcfredrick.github.io/dactyl/posts/2026-09-15/</link><pubDate>Tue, 15 Sep 2026 09:00:00 +0000</pubDate><guid>https://mcfredrick.github.io/dactyl/posts/2026-09-15/</guid><description>&lt;p>Here&amp;rsquo;s a thinking process:&lt;/p>
+&lt;ol>
+&lt;li>&lt;strong>Analyze the Request:&lt;/strong>&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>
+&lt;p>I need to write a daily job digest post for Pivot, a blog for senior ML engineers pivoting into climate tech.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Target reader: senior ML engineer (5+ years, production systems) exploring climate tech careers.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>I need to output ONLY two sections in this order: &amp;ldquo;## Today&amp;rsquo;s Jobs&amp;rdquo; and then&amp;hellip; wait, the structure says &amp;ldquo;write ONLY these two sections, in this order: ## Today&amp;rsquo;s Jobs, ## Today&amp;rsquo;s Pick&amp;rdquo;. But then it says &amp;ldquo;Rules: Output ONLY the markdown body (no front matter, no &amp;ldquo;## Today&amp;rsquo;s Pick&amp;rdquo; section)&amp;rdquo;. And &amp;ldquo;No closing remarks&amp;rdquo;. And &amp;ldquo;Write all jobs provided — do not skip any&amp;rdquo;.&lt;/p></description></item><item><title>2026-09-14</title><link>https://mcfredrick.github.io/dactyl/posts/2026-09-14/</link><pubDate>Mon, 14 Sep 2026 09:00:00 +0000</pubDate><guid>https://mcfredrick.github.io/dactyl/posts/2026-09-14/</guid><description>&lt;h2 id="todays-jobs">Today&amp;rsquo;s Jobs&lt;/h2>
 &lt;p>&lt;strong>&lt;a href="https://www.linkedin.com/jobs/view/solution-architect-data-ai-utility-domain-electric-gas-oil-at-purple-drive-technologies-4465765849">Solution Architect - Data &amp;amp; AI (Utility Domain) — Purple Drive Technologies&lt;/a>&lt;/strong>
 &lt;code>Senior · no compensation info · Good fit&lt;/code>
 Builds AI/data solutions for electric, gas, and oil utilities. Your production ML experience maps to the architect layer, but utility domain knowledge (SCADA, grid data models) is a prerequisite.&lt;/p>
