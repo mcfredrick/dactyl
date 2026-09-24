@@ -1,4 +1,31 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Energy on Pivot</title><link>https://mcfredrick.github.io/dactyl/tags/energy/</link><description>Recent content in Energy on Pivot</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Tue, 22 Sep 2026 09:00:00 +0000</lastBuildDate><atom:link href="https://mcfredrick.github.io/dactyl/tags/energy/index.xml" rel="self" type="application/rss+xml"/><item><title>2026-09-22</title><link>https://mcfredrick.github.io/dactyl/posts/2026-09-22/</link><pubDate>Tue, 22 Sep 2026 09:00:00 +0000</pubDate><guid>https://mcfredrick.github.io/dactyl/posts/2026-09-22/</guid><description>&lt;h2 id="todays-jobs">Today&amp;rsquo;s Jobs&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Energy on Pivot</title><link>https://mcfredrick.github.io/dactyl/tags/energy/</link><description>Recent content in Energy on Pivot</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Thu, 24 Sep 2026 09:00:00 +0000</lastBuildDate><atom:link href="https://mcfredrick.github.io/dactyl/tags/energy/index.xml" rel="self" type="application/rss+xml"/><item><title>2026-09-24</title><link>https://mcfredrick.github.io/dactyl/posts/2026-09-24/</link><pubDate>Thu, 24 Sep 2026 09:00:00 +0000</pubDate><guid>https://mcfredrick.github.io/dactyl/posts/2026-09-24/</guid><description>&lt;p>Here&amp;rsquo;s a thinking process:&lt;/p>
+&lt;ol>
+&lt;li>&lt;strong>Analyze the Request:&lt;/strong>&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>I need to write a daily job: &amp;ldquo;Today&amp;rsquo;s Jobs&amp;rdquo; section for Pivot blog.&lt;/li>
+&lt;li>Reader: senior ML engineer (5+ years, production systems) exploring climate tech careers.&lt;/li>
+&lt;li>Output ONLY the &amp;ldquo;## Today&amp;rsquo;s Jobs&amp;rdquo; section (no front matter, no &amp;ldquo;## Today&amp;rsquo;s Pick&amp;rdquo; section).&lt;/li>
+&lt;li>Format for each job: bullet with &lt;code>[Job Title — Company](url)&lt;/code>, then &lt;code>{level} · {comp_note} · {fit_label}&lt;/code>, then 1-2 sentences about what the company builds and why the role maps to the candidate&amp;rsquo;s skills.&lt;/li>
+&lt;li>Constraints:
+&lt;ul>
+&lt;li>{level} from job&amp;rsquo;s level field&lt;/li>
+&lt;li>{comp_note} verbatim from job&amp;rsquo;s comp_note field&lt;/li>
+&lt;li>{fit_label}: &amp;ldquo;Strong fit&amp;rdquo; if fit_score ≥ 0.75, &amp;ldquo;Good fit&amp;rdquo; if ≥ 0.55, &amp;ldquo;Partial fit&amp;rdquo; if lower&lt;/li>
+&lt;li>Be concrete. If grid optimization, say so. If model serving infrastructure, say so.&lt;/li>
+&lt;li>Never use: &amp;ldquo;leverage&amp;rdquo;, &amp;ldquo;synergy&amp;rdquo;, &amp;ldquo;game-changer&amp;rdquo;, &amp;ldquo;impactful&amp;rdquo;, &amp;ldquo;making a difference&amp;rdquo;, &amp;ldquo;saving the planet&amp;rdquo;.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>I need to process 4 jobs given in the input.&lt;/li>
+&lt;li>I must output ONLY the markdown body (no front matter, no &amp;ldquo;## Today&amp;rsquo;s Pick&amp;rdquo; section).&lt;/li>
+&lt;li>No closing remarks.&lt;/li>
+&lt;li>Write all jobs provided — do not skip any.&lt;/li>
+&lt;/ul>
+&lt;ol start="2">
+&lt;li>&lt;strong>Extract Data for Each Job:&lt;/strong>
+Let&amp;rsquo;s parse each job carefully:&lt;/li>
+&lt;/ol>
+&lt;p>&lt;strong>Job 1:&lt;/strong> Machine Learning Engineer @ Gigaton — Gigaton&lt;/p></description></item><item><title>2026-09-22</title><link>https://mcfredrick.github.io/dactyl/posts/2026-09-22/</link><pubDate>Tue, 22 Sep 2026 09:00:00 +0000</pubDate><guid>https://mcfredrick.github.io/dactyl/posts/2026-09-22/</guid><description>&lt;h2 id="todays-jobs">Today&amp;rsquo;s Jobs&lt;/h2>
 &lt;p>&lt;strong>&lt;a href="https://jobs.ashbyhq.com/e-source/f6b04d1a-937a-4cbf-be74-c821b15ec771">AI / ML Engineer at E-source — E Source&lt;/a>&lt;/strong>
 &lt;code>Senior · no compensation info mentioned · Strong fit&lt;/code>
 E Source builds utility-sector software and data platforms for electric and gas companies. This role applies ML to energy operations data, matching production ML engineering skills with a climate-adjacent vertical.&lt;/p>
