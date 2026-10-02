@@ -1,58 +1,6 @@
 {
   "urls": [
     {
-      "url": "https://www.linkedin.com/jobs/view/geospatial-data-scientist-at-neural-earth-4447592038",
-      "date": "2026-08-03"
-    },
-    {
-      "url": "https://www.terra.do/climate-jobs/job-board/senior-engineer-full-stack-8247262/",
-      "date": "2026-08-03"
-    },
-    {
-      "url": "https://www.linkedin.com/jobs/view/senior-machine-learning-scientist-climate-hydrology-at-flagship-pioneering-4422205683",
-      "date": "2026-08-03"
-    },
-    {
-      "url": "https://www.linkedin.com/jobs/view/member-of-technical-staff-infrastructure-at-obvious-4443073792",
-      "date": "2026-08-03"
-    },
-    {
-      "url": "https://flexgen.zya.me/job/remote-senior-software-engineer-united-states",
-      "date": "2026-08-03"
-    },
-    {
-      "url": "https://flexgen.zya.me/job/remote-senior-full-stack-software-engineer-solar-design-tools",
-      "date": "2026-08-03"
-    },
-    {
-      "url": "https://www.linkedin.com/jobs/view/senior-devops-engineer-at-tomorrow-io-4443931253",
-      "date": "2026-08-03"
-    },
-    {
-      "url": "https://jobs.ashbyhq.com/vibrant%20planet/ec9c76f5-bc72-4c7e-b016-214c8271fb24",
-      "date": "2026-08-03"
-    },
-    {
-      "url": "https://jobs.ashbyhq.com/arbor/78972d7d-8135-44ea-afa6-60ac1fde1172",
-      "date": "2026-08-03"
-    },
-    {
-      "url": "https://www.linkedin.com/jobs/view/principal-engineer-data-center-sustainability-at-google-4446798893",
-      "date": "2026-08-03"
-    },
-    {
-      "url": "https://www.linkedin.com/jobs/view/software-engineer-backend-at-weavegrid-4447713539",
-      "date": "2026-08-03"
-    },
-    {
-      "url": "https://www.linkedin.com/jobs/view/infrastructure-software-engineer-energy-storage-at-greenlever-4446145765",
-      "date": "2026-08-03"
-    },
-    {
-      "url": "https://www.linkedin.com/jobs/view/platform-engineer-at-fervo-energy-4445036203",
-      "date": "2026-08-03"
-    },
-    {
       "url": "https://jobs.ashbyhq.com/watershed/289cd9d8-98cb-46b5-9287-e58504da72b7",
       "date": "2026-08-04"
     },
@@ -2723,6 +2671,66 @@
     {
       "url": "https://jobs.ashbyhq.com/gridcare/bcb27106-16e9-4697-82df-87f55ea7502d",
       "date": "2026-10-01"
+    },
+    {
+      "url": "https://www.linkedin.com/jobs/view/senior-machine-learning-scientist-climate-hydrology-at-flagship-pioneering-4422205683",
+      "date": "2026-10-02"
+    },
+    {
+      "url": "https://www.workatastartup.com/jobs/50341",
+      "date": "2026-10-02"
+    },
+    {
+      "url": "https://www.linkedin.com/jobs/view/sr-software-engineer-engineering-applications-at-rivian-4472356825",
+      "date": "2026-10-02"
+    },
+    {
+      "url": "https://www.workatastartup.com/jobs/86166",
+      "date": "2026-10-02"
+    },
+    {
+      "url": "https://jobs.ashbyhq.com/base-power/e0c632cd-2375-4e0f-8a9f-11dbb820e885",
+      "date": "2026-10-02"
+    },
+    {
+      "url": "https://www.linkedin.com/jobs/view/staff-systems-engineer-energy-management-at-rivian-and-volkswagen-group-technologies-4472859590",
+      "date": "2026-10-02"
+    },
+    {
+      "url": "https://wellfound.com/jobs/4627308-founding-engineer-backend-ml-systems",
+      "date": "2026-10-02"
+    },
+    {
+      "url": "https://jobs.lever.co/gridware/ffe216c9-1fb4-4e35-87a6-af89ab08c28c",
+      "date": "2026-10-02"
+    },
+    {
+      "url": "https://wellfound.com/jobs/4617974-staff-full-stack-engineer",
+      "date": "2026-10-02"
+    },
+    {
+      "url": "https://www.terra.do/climate-jobs/job-board/Full-Stack-Software-Engineer-Curated-8284836/",
+      "date": "2026-10-02"
+    },
+    {
+      "url": "https://www.linkedin.com/jobs/view/principal-data-scientist-at-vertage-4472311663",
+      "date": "2026-10-02"
+    },
+    {
+      "url": "https://www.terra.do/climate-jobs/job-board/Full-stack-Engineer--Climate-tech-startup--alteam-8292835/",
+      "date": "2026-10-02"
+    },
+    {
+      "url": "https://wellfound.com/jobs/4610022-founding-engineer-ml-backend",
+      "date": "2026-10-02"
+    },
+    {
+      "url": "https://wellfound.com/jobs/4634402-staff-backend-engineer",
+      "date": "2026-10-02"
+    },
+    {
+      "url": "https://www.linkedin.com/jobs/view/full-stack-software-engineer-at-relae-4474546251",
+      "date": "2026-10-02"
     }
   ]
 }
