@@ -1,4 +1,27 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Ml on Pivot</title><link>https://mcfredrick.github.io/dactyl/tags/ml/</link><description>Recent content in Ml on Pivot</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Thu, 01 Oct 2026 09:00:00 +0000</lastBuildDate><atom:link href="https://mcfredrick.github.io/dactyl/tags/ml/index.xml" rel="self" type="application/rss+xml"/><item><title>2026-10-01</title><link>https://mcfredrick.github.io/dactyl/posts/2026-10-01/</link><pubDate>Thu, 01 Oct 2026 09:00:00 +0000</pubDate><guid>https://mcfredrick.github.io/dactyl/posts/2026-10-01/</guid><description>&lt;h2 id="todays-jobs">Today&amp;rsquo;s Jobs&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Ml on Pivot</title><link>https://mcfredrick.github.io/dactyl/tags/ml/</link><description>Recent content in Ml on Pivot</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Fri, 02 Oct 2026 09:00:00 +0000</lastBuildDate><atom:link href="https://mcfredrick.github.io/dactyl/tags/ml/index.xml" rel="self" type="application/rss+xml"/><item><title>2026-10-02</title><link>https://mcfredrick.github.io/dactyl/posts/2026-10-02/</link><pubDate>Fri, 02 Oct 2026 09:00:00 +0000</pubDate><guid>https://mcfredrick.github.io/dactyl/posts/2026-10-02/</guid><description>&lt;p>Here&amp;rsquo;s a thinking process:&lt;/p>
+&lt;ol>
+&lt;li>&lt;strong>Analyze the Request:&lt;/strong>&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>I need to write a daily job digest post for Pivot, a blog for senior ML engineers pivoting into climate tech.&lt;/li>
+&lt;li>Target reader: senior ML engineer (5+ years, production systems) exploring climate tech careers.&lt;/li>
+&lt;li>I must output ONLY two sections in this order: &lt;code>## Today's Jobs&lt;/code> and then the content under it. No &amp;ldquo;## Today&amp;rsquo;s Pick&amp;rdquo; section.&lt;/li>
+&lt;li>No front matter, no closing remarks, no extra text.&lt;/li>
+&lt;li>I need to write a bullet for each of the 15 jobs provided.&lt;/li>
+&lt;li>Each bullet format: &lt;code>[Job Title — Company](url)&lt;/code>&lt;/li>
+&lt;li>Then on the next line: &lt;code>{level} · {comp_note} · {fit_label}&lt;/code>&lt;/li>
+&lt;li>Then 1-2 sentences: what the company actually builds (specific, not vague), and why this role maps to the candidate&amp;rsquo;s actual skills.&lt;/li>
+&lt;li>Constraints on {level}: from job&amp;rsquo;s level field.&lt;/li>
+&lt;li>{comp_note}: verbatim from job&amp;rsquo;s comp_note field.&lt;/li>
+&lt;li>{fit_label}: &amp;ldquo;Strong fit&amp;rdquo; if fit_score ≥ 0.75, &amp;ldquo;Good fit&amp;rdquo; if ≥ 0.55, &amp;ldquo;Partial fit&amp;rdquo; if lower.&lt;/li>
+&lt;li>Prohibited words: &amp;ldquo;leverage&amp;rdquo;, &amp;ldquo;synergy&amp;rdquo;, &amp;ldquo;game-changer&amp;rdquo;, &amp;ldquo;impactful&amp;rdquo;, &amp;ldquo;making a difference&amp;rdquo;, &amp;ldquo;saving the planet&amp;rdquo;.&lt;/li>
+&lt;li>Be concrete. Specify what they build (e.g., grid optimization, model serving infrastructure). Never use the banned words.&lt;/li>
+&lt;/ul>
+&lt;ol start="2">
+&lt;li>&lt;strong>Process Each Job:&lt;/strong>
+I&amp;rsquo;ll go through each of the 15 jobs, extract the needed fields, compute fit_label, and write the 1-2 sentences concretely.&lt;/li>
+&lt;/ol>
+&lt;p>Let&amp;rsquo;s list them out with all fields:&lt;/p></description></item><item><title>2026-10-01</title><link>https://mcfredrick.github.io/dactyl/posts/2026-10-01/</link><pubDate>Thu, 01 Oct 2026 09:00:00 +0000</pubDate><guid>https://mcfredrick.github.io/dactyl/posts/2026-10-01/</guid><description>&lt;h2 id="todays-jobs">Today&amp;rsquo;s Jobs&lt;/h2>
 &lt;p>&lt;strong>&lt;a href="https://www.linkedin.com/jobs/view/industry-solution-leader-power-and-utilities-power-generation-and-battery-storage-dispatch-optimization-at-c3-ai-4471786473">Industry Solution Leader - Power and Utilities (Power Generation and Battery Storage Dispatch Optimization) — C3 AI&lt;/a>&lt;/strong>
 &lt;code>Staff · no compensation info mentioned · Strong fit&lt;/code>
 C3 AI builds an enterprise AI platform used by utilities and energy companies to deploy machine learning models at scale. This role leads technical solution design for power generation and battery storage dispatch optimization, directly applying the candidate&amp;rsquo;s experience building and serving ML systems in production environments.&lt;/p></description></item><item><title>2026-09-30</title><link>https://mcfredrick.github.io/dactyl/posts/2026-09-30/</link><pubDate>Wed, 30 Sep 2026 09:00:00 +0000</pubDate><guid>https://mcfredrick.github.io/dactyl/posts/2026-09-30/</guid><description>&lt;h2 id="todays-jobs">Today&amp;rsquo;s Jobs&lt;/h2>
