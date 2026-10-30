@@ -1,74 +1,6 @@
 {
   "urls": [
     {
-      "url": "https://wellfound.com/jobs/4452676-staff-forward-deployed-engineer",
-      "date": "2026-08-31"
-    },
-    {
-      "url": "https://www.linkedin.com/jobs/view/senior-ml-engineer-energy-utilities-at-azx-4461052970",
-      "date": "2026-08-31"
-    },
-    {
-      "url": "https://www.linkedin.com/jobs/view/sr-software-engineer-at-scale-4460570863",
-      "date": "2026-08-31"
-    },
-    {
-      "url": "https://www.linkedin.com/jobs/view/staff-data-engineer-at-form-energy-4460808273",
-      "date": "2026-08-31"
-    },
-    {
-      "url": "https://www.linkedin.com/jobs/view/staff-data-engineer-at-form-energy-4460806333",
-      "date": "2026-08-31"
-    },
-    {
-      "url": "https://www.linkedin.com/jobs/view/data-engineer-at-base-power-company-4450704079",
-      "date": "2026-08-31"
-    },
-    {
-      "url": "https://wellfound.com/jobs/4121676-applied-ai-engineer-canada",
-      "date": "2026-08-31"
-    },
-    {
-      "url": "https://www.linkedin.com/jobs/view/software-engineer-%E2%80%93-c%2B%2B-python-at-general-matter-4459849373",
-      "date": "2026-08-31"
-    },
-    {
-      "url": "https://boards.greenhouse.io/redwoodmaterials/jobs/6097367004?gh_jid=6097367004",
-      "date": "2026-08-31"
-    },
-    {
-      "url": "https://www.linkedin.com/jobs/view/embedded-software-engineer-at-general-matter-4460116708",
-      "date": "2026-08-31"
-    },
-    {
-      "url": "https://jobs.lever.co/provectus/2551311d-bb98-4eca-8746-07443edf6bd1",
-      "date": "2026-08-31"
-    },
-    {
-      "url": "https://www.linkedin.com/jobs/view/senior-energy-systems-engineer-at-exp-4459606941",
-      "date": "2026-08-31"
-    },
-    {
-      "url": "https://www.linkedin.com/jobs/view/senior-project-engineer-renewable-energy-at-rise-technical-4453456160",
-      "date": "2026-08-31"
-    },
-    {
-      "url": "https://jobs.ashbyhq.com/davidenergy/b3550840-6344-46b3-9ebe-be9413907a9f",
-      "date": "2026-08-31"
-    },
-    {
-      "url": "https://www.linkedin.com/jobs/view/lead-software-engineer-at-storm4-4459198643",
-      "date": "2026-08-31"
-    },
-    {
-      "url": "https://www.linkedin.com/jobs/view/geospatial-data-engineer-ww-sustainability-at-amazon-4460544239",
-      "date": "2026-08-31"
-    },
-    {
-      "url": "https://apply.workable.com/accurant/j/B903CF164E",
-      "date": "2026-08-31"
-    },
-    {
       "url": "https://jobs.ashbyhq.com/atira/023bfb7d-3919-4b3d-94b2-77e8a6ea629d",
       "date": "2026-09-01"
     },
@@ -2551,6 +2483,78 @@
     {
       "url": "https://jobs.ashbyhq.com/watershed/036a9fef-e915-4a51-a641-6d9804ac5f4d/application",
       "date": "2026-10-29"
+    },
+    {
+      "url": "https://www.linkedin.com/jobs/view/forward-deployed-engineer-at-base-power-company-4480191735",
+      "date": "2026-10-30"
+    },
+    {
+      "url": "https://www.linkedin.com/jobs/view/forward-deployed-power-engineer-at-gridsight-4451866173",
+      "date": "2026-10-30"
+    },
+    {
+      "url": "https://www.linkedin.com/jobs/view/forward-deployed-power-engineer-at-gridsight-4451871095",
+      "date": "2026-10-30"
+    },
+    {
+      "url": "https://www.linkedin.com/jobs/view/senior-data-scientist-%E2%80%93-load-renewable-generation-forecasting-at-brillfy-technology-inc-4484853025",
+      "date": "2026-10-30"
+    },
+    {
+      "url": "https://jobs.ashbyhq.com/gridcare/5ff06111-dd8a-47e4-88e6-e48bb9db4720",
+      "date": "2026-10-30"
+    },
+    {
+      "url": "https://www.linkedin.com/jobs/view/data-scientist-at-context-labs-bv-4482518595",
+      "date": "2026-10-30"
+    },
+    {
+      "url": "https://jobs.ashbyhq.com/aurorasolar/ecd50dc7-8dd4-4884-b65d-5a2d5162fe60",
+      "date": "2026-10-30"
+    },
+    {
+      "url": "https://www.linkedin.com/jobs/view/data-engineer-at-base-power-company-4450704079",
+      "date": "2026-10-30"
+    },
+    {
+      "url": "https://www.linkedin.com/jobs/view/data-engineer-at-voltagrid-4484144326",
+      "date": "2026-10-30"
+    },
+    {
+      "url": "https://www.workatastartup.com/jobs/84250",
+      "date": "2026-10-30"
+    },
+    {
+      "url": "https://jobs.ashbyhq.com/kiefer/ec5aff7a-d21e-4f5e-a95b-9cf8db7dd6b4/application",
+      "date": "2026-10-30"
+    },
+    {
+      "url": "https://www.linkedin.com/jobs/view/senior-engineer-battery-energy-storage-systems-at-e2-consulting-engineers-lp-4485264357",
+      "date": "2026-10-30"
+    },
+    {
+      "url": "https://jobs.ashbyhq.com/P-1%20AI/c9c17cc3-8ebd-4de7-a5c7-697865e84059/application",
+      "date": "2026-10-30"
+    },
+    {
+      "url": "https://jobs.lever.co/AIFund/d3fa4566-9f4d-4034-9e27-0b8349211210?lever-source=careers.aifund.ai",
+      "date": "2026-10-30"
+    },
+    {
+      "url": "https://jobs.ashbyhq.com/oscilar/58b4c728-4732-4e81-ad7a-c0927190a171",
+      "date": "2026-10-30"
+    },
+    {
+      "url": "https://www.linkedin.com/jobs/view/broadcast-engineer-live-sports-production-prime-video-live-sports-at-prime-video-amazon-mgm-studios-4477676369",
+      "date": "2026-10-30"
+    },
+    {
+      "url": "https://www.linkedin.com/jobs/view/systems-engineer-ii-renewable-energy-solutions-at-mitsubishi-electric-power-products-inc-4481457994",
+      "date": "2026-10-30"
+    },
+    {
+      "url": "https://www.terra.do/climate-jobs/job-board/remote-atmospheric-scientist-for-ai-climate-insights-8393702/",
+      "date": "2026-10-30"
     }
   ]
 }
