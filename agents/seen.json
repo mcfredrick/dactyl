@@ -1,90 +1,6 @@
 {
   "urls": [
     {
-      "url": "https://remoshift.com/job/clean-energy-founding-ai-engineer-100-remote-m-f-d-793cccd1",
-      "date": "2026-09-25"
-    },
-    {
-      "url": "https://www.terra.do/climate-jobs/job-board/software-engineer-ml-platform-staff-sr-staff-8380002/",
-      "date": "2026-09-25"
-    },
-    {
-      "url": "https://www.linkedin.com/jobs/view/ml-infrastructure-engineer-at-laminar-4471603274",
-      "date": "2026-09-25"
-    },
-    {
-      "url": "https://www.linkedin.com/jobs/view/staff-forward-deployed-engineer-at-texture-4428321468",
-      "date": "2026-09-25"
-    },
-    {
-      "url": "https://www.linkedin.com/jobs/view/enterprise-solutions-principal-power-and-utilities-at-softserve-4470948803",
-      "date": "2026-09-25"
-    },
-    {
-      "url": "https://www.linkedin.com/jobs/view/senior-solutions-architect-global-energy-utilities-at-amazon-web-services-aws-4472003132",
-      "date": "2026-09-25"
-    },
-    {
-      "url": "https://www.linkedin.com/jobs/view/senior-software-engineer-platform-engineering-at-iren-4470639192",
-      "date": "2026-09-25"
-    },
-    {
-      "url": "https://jobs.ashbyhq.com/nexxa/f7b73d17-675e-4aad-ace4-22abe2b0f9b4?gh_src=Plug+and+Play+job+board",
-      "date": "2026-09-25"
-    },
-    {
-      "url": "https://www.linkedin.com/jobs/view/senior-software-engineer-at-uplight-4469169236",
-      "date": "2026-09-25"
-    },
-    {
-      "url": "https://www.linkedin.com/jobs/view/senior-backend-engineer-python-at-ev-energy-4471621645",
-      "date": "2026-09-25"
-    },
-    {
-      "url": "https://jobs.ashbyhq.com/Crusoe/a1adc254-151a-48a0-b609-0d37db879919",
-      "date": "2026-09-25"
-    },
-    {
-      "url": "https://www.linkedin.com/jobs/view/senior-data-scientist-fleet-health-at-gridware-4469776826",
-      "date": "2026-09-25"
-    },
-    {
-      "url": "https://www.linkedin.com/jobs/view/data-engineer-at-gridware-4418756789",
-      "date": "2026-09-25"
-    },
-    {
-      "url": "https://www.linkedin.com/jobs/view/staff-bess-electrical-design-engineer-epc-at-redwood-materials-4457502234",
-      "date": "2026-09-25"
-    },
-    {
-      "url": "https://jobs.ashbyhq.com/baseten/84c1801c-1a65-49fb-aaaa-beeafd530e7e",
-      "date": "2026-09-25"
-    },
-    {
-      "url": "https://www.linkedin.com/jobs/view/project-engineer-solar%2Bstorage-electrical-engineer-at-kimmel-associates-4463068389",
-      "date": "2026-09-25"
-    },
-    {
-      "url": "https://www.linkedin.com/jobs/view/engineer-iii-or-iv-storage-application-at-mortenson-4467288627",
-      "date": "2026-09-25"
-    },
-    {
-      "url": "https://www.linkedin.com/jobs/view/senior-software-engineer-2-at-the-farmer-s-dog-4387747491",
-      "date": "2026-09-25"
-    },
-    {
-      "url": "https://www.linkedin.com/jobs/view/senior-software-engineer-at-blount-fine-foods-4467937415",
-      "date": "2026-09-25"
-    },
-    {
-      "url": "https://www.linkedin.com/jobs/view/software-engineer-at-fooda-4460043904",
-      "date": "2026-09-25"
-    },
-    {
-      "url": "https://www.linkedin.com/jobs/view/senior-backend-software-engineer-at-hungryroot-4468260280",
-      "date": "2026-09-25"
-    },
-    {
       "url": "https://www.linkedin.com/jobs/view/senior-bess-engineer-remote-at-solv-energy-4470993042",
       "date": "2026-09-28"
     },
@@ -2415,6 +2331,54 @@
     {
       "url": "https://jobs.workable.com/view/m1ymDqFbmNxrxqSXzBmRnA/senior%2Flead-backend-engineer-(remote)-in-switzerland-at-fuse-energy",
       "date": "2026-11-23"
+    },
+    {
+      "url": "https://jobs.ashbyhq.com/cruxclimate/de7fb381-026b-420a-8366-f04dffd64f61/application",
+      "date": "2026-11-24"
+    },
+    {
+      "url": "https://jobs.ashbyhq.com/e-source/f6b04d1a-937a-4cbf-be74-c821b15ec771",
+      "date": "2026-11-24"
+    },
+    {
+      "url": "https://www.linkedin.com/jobs/view/ml-infrastructure-engineer-at-laminar-4471603274",
+      "date": "2026-11-24"
+    },
+    {
+      "url": "https://www.linkedin.com/jobs/view/industry-solution-leader-ai-deployments-power-and-utilities-power-generation-and-battery-storage-dispatch-optimization-at-c3-ai-4471781639",
+      "date": "2026-11-24"
+    },
+    {
+      "url": "https://www.linkedin.com/jobs/view/industry-solution-leader-ai-deployments-power-and-utilities-power-generation-and-battery-storage-dispatch-optimization-at-c3-ai-4471786473",
+      "date": "2026-11-24"
+    },
+    {
+      "url": "https://jobs.ashbyhq.com/aurorasolar/ecd50dc7-8dd4-4884-b65d-5a2d5162fe60?gh_src=Climate+Draft+job+board",
+      "date": "2026-11-24"
+    },
+    {
+      "url": "https://job-boards.greenhouse.io/energyhub/jobs/8877373002&gh_src=f230d6562us",
+      "date": "2026-11-24"
+    },
+    {
+      "url": "https://www.linkedin.com/jobs/view/senior-data-engineer-data-platform-battery-energy-storage-systems-at-amazon-4493695457",
+      "date": "2026-11-24"
+    },
+    {
+      "url": "https://www.linkedin.com/jobs/view/senior-data-engineer-data-platform-battery-energy-storage-systems-at-amazon-4493695459",
+      "date": "2026-11-24"
+    },
+    {
+      "url": "https://www.workatastartup.com/jobs/82751",
+      "date": "2026-11-24"
+    },
+    {
+      "url": "https://jobs.energizecap.com/companies/pvcase/jobs/95966677-software-engineer-net",
+      "date": "2026-11-24"
+    },
+    {
+      "url": "https://www.linkedin.com/jobs/view/staff-data-scientist-at-nextera-energy-inc-4492637990",
+      "date": "2026-11-24"
     }
   ]
 }
